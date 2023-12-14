@@ -1,17 +1,15 @@
-<script>
-	// @ts-nocheck
-
+<script lang="ts">
 	export const prerender = true;
 	import '../app.css';
 	import Nav from '$lib/components/Nav.svelte';
 	import Dialog from '$lib/components/Dialog.svelte';
 	import Logo from '$lib/components/Logo.svelte';
 
-	let dialog;
+	let dialog: HTMLDialogElement;
 
 	function openDialog() {
 		dialog.showModal();
-		dialog.addEventListener('click', function (event) {
+		dialog.addEventListener('click', function (/** @type {{ target: any; }} */ event) {
 			if (event.target === dialog) {
 				dialog.close();
 			}

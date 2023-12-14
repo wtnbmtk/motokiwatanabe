@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { page } from '$app/stores';
 	import { createEventDispatcher } from 'svelte';
 
@@ -13,10 +13,7 @@
 		dispatch('closeDialog');
 	}
 
-	/**
-	 * @type {HTMLDialogElement}
-	 */
-	export let dialog;
+	export let dialog: HTMLDialogElement;
 </script>
 
 <dialog bind:this={dialog}>
