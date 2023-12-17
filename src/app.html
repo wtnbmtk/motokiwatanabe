@@ -3,57 +3,51 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		<title>ウェブダチ</title>
-		<meta name="description" content="思い遣りと助け合いで繋がるWebクリエイティブサービス" />
-		<meta name="keywords" content=" Web制作,Webデザイン,フロントエンド開発" />
-		<meta property="og:title" content="繋がるWebクリエイティブパートナー" />
-		<meta
-			property="og:description"
-			content="ウェブダチは生産性を高めたWebクリエイティブで、サポートのリソースを増やしたサイト運営を行います。"
-		/>
-		<meta property="og:url" content="https://sveltekit-4pz.pages.dev/" />
-		<meta
-			property="og:image"
-			content="https://sveltekit-4pz.pages.dev/_app/immutable/assets/logo1.4e60de04.png"
-		/>
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta property="og:type" content="website" />
-		<meta property="og:site_name" content="ウェブダチ" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.ico" />
+		<title>Motoki Watanabe's Portfolio</title>
+		<meta name="description" content="Motoki Watanabe's Portfolio" />
+		<link rel="icon" href="/src/lib/assets/name-square-logo.svg" />
 		%sveltekit.head%
-		<script>
-			(function (d) {
-				var config = {
-						kitId: 'wuw3hhf',
-						scriptTimeout: 3000,
-						async: true
-					},
-					h = d.documentElement,
-					t = setTimeout(function () {
-						h.className = h.className.replace(/\bwf-loading\b/g, '') + ' wf-inactive';
-					}, config.scriptTimeout),
-					tk = d.createElement('script'),
-					f = false,
-					s = d.getElementsByTagName('script')[0],
-					a;
-				h.className += ' wf-loading';
-				tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
-				tk.async = true;
-				tk.onload = tk.onreadystatechange = function () {
-					a = this.readyState;
-					if (f || (a && a != 'complete' && a != 'loaded')) return;
-					f = true;
-					clearTimeout(t);
-					try {
-						Typekit.load(config);
-					} catch (e) {}
-				};
-				s.parentNode.insertBefore(tk, s);
-			})(document);
-		</script>
-		<script src="https://kit.fontawesome.com/e9b85daa7b.js" crossorigin="anonymous"></script>
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div class="contents">%sveltekit.body%</div>
+		<script type="text/javascript" src="/src/lib/assets/patch.js" async></script>
+
+		<script type="text/javascript">
+			function showError(errId, errMsg) {
+				// handle critical errors here if needed
+			}
+
+			function patchInitialized(patch) {
+				// You can now access the patch object (patch), register variable watchers and so on
+			}
+
+			function patchFinishedLoading(patch) {
+				// The patch is ready now, all assets have been loaded
+			}
+
+			document.addEventListener('CABLES.jsLoaded', function (event) {
+				CABLES.patch = new CABLES.Patch({
+					patch: CABLES.exportedPatch,
+					prefixAssetPath: '',
+					assetPath: '/assets',
+					jsPath: '/src/lib/assets/',
+					glCanvasId: 'glcanvas',
+					glCanvasResizeToWindow: true,
+					onError: showError,
+					onPatchLoaded: patchInitialized,
+					onFinishedLoading: patchFinishedLoading,
+					canvas: { alpha: true, premultipliedAlpha: true } // make canvas transparent
+				});
+			});
+
+			// disable rubberband effect on mobile devices
+			document.getElementById('glcanvas').addEventListener(
+				'touchmove',
+				(e) => {
+					e.preventDefault();
+				},
+				false
+			);
+		</script>
 	</body>
 </html>

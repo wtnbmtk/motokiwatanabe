@@ -5,10 +5,11 @@
 
 <main>
 	<section class="cover">
+		<canvas id="glcanvas" width="100vw" height="100vh" tabindex="1" />
 		<div class="filter">
 			<hgroup class="text">
-				<h1>This Is a True Creativity.</h1>
-				<p>これは真の創造である。作品は一人の発想から生み出された。</p>
+				<h1>This<br />Creativity<br />Is True.</h1>
+				<p>この創造性は真実である。<br />作品は一人の感性から生み出された。</p>
 			</hgroup>
 			<div />
 		</div>
