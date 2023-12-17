@@ -10,9 +10,8 @@
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div class="contents">%sveltekit.body%</div>
-		<canvas id="glcanvas" width="100vw" height="100vh" tabindex="1"></canvas>
 
-		<script type="text/javascript" src="/src/js/patch.js" async></script>
+		<script type="text/javascript" src="/js/patch.js" async></script>
 
 		<script type="text/javascript">
 			function showError(errId, errMsg) {
@@ -34,7 +33,6 @@
 					assetPath: 'assets/',
 					jsPath: 'js/',
 					glCanvasId: 'glcanvas',
-					glCanvasResizeToWindow: true,
 					onError: showError,
 					onPatchLoaded: patchInitialized,
 					onFinishedLoading: patchFinishedLoading,

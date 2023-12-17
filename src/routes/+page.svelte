@@ -5,11 +5,7 @@
 
 <main>
 	<section class="cover">
-		<script
-			type="module"
-			src="https://unpkg.com/@splinetool/viewer@0.9.523/build/spline-viewer.js"
-		></script>
-		<spline-viewer url="https://prod.spline.design/EeY3ESVLlnDcXTih/scene.splinecode" />
+		<canvas id="glcanvas" width="800px" height="400px" />
 		<div class="filter">
 			<hgroup class="text">
 				<h1>This<br />Creativity<br />Is True.</h1>
@@ -60,17 +56,19 @@
 </main>
 
 <style>
+	canvas {
+		aspect-ratio: 2/1;
+		width: 100%;
+		height: auto;
+	}
 	.cover {
-		background-image: url('lib/assets/bg-img-1.jpeg');
-		background-size: cover;
 		padding: 0;
 		color: white;
-		max-width: unset;
-		margin: 0;
+		position: relative;
+
+		z-index: 1;
 	}
 	.filter {
-		background-color: rgba(0, 0, 0, 0.5);
-		backdrop-filter: blur(2px);
 		display: grid;
 		place-content: center;
 		padding: 1rem;

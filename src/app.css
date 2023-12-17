@@ -78,7 +78,6 @@ picture {
 
 /* MAIN */
 main {
-	container: main / inline-size;
 }
 section {
 	max-width: 800px;
