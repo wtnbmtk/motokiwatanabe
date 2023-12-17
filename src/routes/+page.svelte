@@ -5,7 +5,11 @@
 
 <main>
 	<section class="cover">
-		<canvas id="glcanvas" width="100vw" height="100vh" tabindex="1" />
+		<script
+			type="module"
+			src="https://unpkg.com/@splinetool/viewer@0.9.523/build/spline-viewer.js"
+		></script>
+		<spline-viewer url="https://prod.spline.design/EeY3ESVLlnDcXTih/scene.splinecode" />
 		<div class="filter">
 			<hgroup class="text">
 				<h1>This<br />Creativity<br />Is True.</h1>
