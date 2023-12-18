@@ -25,7 +25,7 @@
 					{#if a.path === $page.url.pathname}
 						<li class="active"><a href={a.path} on:click={clickClose}>{a.name}</a></li>
 					{:else}
-						<li><a href={a.path} on:click={clickClose}>{a.name}</a></li>
+						<li><a data-sveltekit-reload href={a.path} on:click={clickClose}>{a.name}</a></li>
 					{/if}
 				{/each}
 			</ul>

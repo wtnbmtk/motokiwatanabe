@@ -20,6 +20,8 @@
 *,
 *::before,
 *::after {
+	margin: 0;
+	padding: 0;
 	box-sizing: border-box;
 }
 html {
@@ -31,8 +33,7 @@ html:has(dialog[open]) {
 }
 body {
 	font: 1.2em 'ZenOldMincho-Regular', serif;
-	background: black;
-	color: white;
+
 	margin: 0;
 	/* font: 1.2em "Voto Serif GX", serif;
   	font-variation-settings: "wght" 100, "wdth" 80, "opsz" 50; */
@@ -40,7 +41,9 @@ body {
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5,
+h6 {
 	margin: 1rem 0;
 }
 h2 {
@@ -49,8 +52,14 @@ h2 {
 h4 {
 	font-size: 1.5rem;
 }
-ul li a:hover {
+p {
+	margin: revert;
+}
+a:hover {
 	text-decoration: underline;
+}
+ul {
+	padding: revert;
 }
 ol {
 	padding-left: 16px;
@@ -61,18 +70,21 @@ picture {
 	max-width: 100%;
 	height: auto;
 }
+.logo {
+	height: 40px;
+}
 .logo svg {
 	margin-left: 16px;
-	padding: 10px;
-	height: 50px;
+	padding: 5px;
+	height: 40px;
 	width: auto;
 	fill: #000;
 	fill-opacity: 1;
 }
 .name svg {
-	height: 50px;
-	width: auto;
-	fill: #fff;
+	height: auto;
+	width: 200px;
+	fill: #000;
 	fill-opacity: 1;
 }
 
@@ -83,6 +95,14 @@ section {
 	max-width: 800px;
 	margin: 1rem auto 0;
 	padding: 1rem;
+}
+section:first-child {
+	margin: 0 auto;
+}
+section:first-child::before {
+	content: '';
+	display: block;
+	margin-top: 50px;
 }
 .contain {
 	max-width: 600px;
@@ -142,7 +162,7 @@ footer {
 footer #under-nav a {
 	position: relative;
 	display: block;
-	color: white;
+	color: black;
 	text-decoration: none;
 	outline: none;
 	overflow: hidden;
@@ -162,28 +182,28 @@ footer #under-nav a::after {
 footer #under-nav a::before {
 	top: 0;
 	left: 0;
-	border-top: 2px solid white;
-	border-left: 2px solid white;
+	border-top: 2px solid black;
+	border-left: 2px solid black;
 }
 footer #under-nav a::after {
 	right: 0;
 	bottom: 0;
-	border-right: 2px solid white;
-	border-bottom: 2px solid white;
+	border-right: 2px solid black;
+	border-bottom: 2px solid black;
 }
 footer #under-nav .link1 a:hover {
-	background-color: #07b53b;
-	color: #fff;
+	background-color: #000;
+	color: white;
 	transition: all 0.7s;
 }
 footer #under-nav .link2 a:hover {
-	background-color: #000;
-	color: #fff;
+	background-color: #21bddb;
+	color: white;
 	transition: all 0.7s;
 }
 footer #under-nav .link3 a:hover {
 	background-color: #7215ec;
-	color: #fff;
+	color: white;
 	transition: all 0.7s;
 }
 footer #under-nav a:hover::before,

@@ -1,6 +1,6 @@
 <main>
 	<section>
-		<h3>CONTACT</h3>
+		<h2>CONTACT</h2>
 		<!-- svelte-ignore a11y-missing-attribute -->
 		<iframe
 			id="form"

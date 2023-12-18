@@ -27,10 +27,10 @@
 </script>
 
 <div id="headroom">
-	<Headroom on:pin={onPin} duration="350ms" offset={50} tolerance={0}>
+	<Headroom on:pin={onPin} duration="350ms" offset={40} tolerance={0}>
 		<header>
 			<div>
-				<a href="/"><div class="logo"><Logo /></div></a>
+				<a data-sveltekit-reload href="/"><div class="logo"><Logo /></div></a>
 				<button class="btn" type="button" on:click={openDialog}>MENU</button>
 				<Nav />
 			</div>
@@ -39,8 +39,6 @@
 </div>
 
 <Dialog bind:dialog on:closeDialog={closeDialog} />
-<div class="margin" />
-<div class="bg" />
 <slot />
 
 <footer>
@@ -49,10 +47,10 @@
 			<nav id="under-nav">
 				<ul>
 					<li class="link1">
-						<a href="https://lin.ee/VTOX579">LINE</a>
+						<a href="https://github.com/wtnbmtk">Github</a>
 					</li>
 					<li class="link2">
-						<a href="https://twitter.com/webdachi">𝕏</a>
+						<a href="https://www.wantedly.com/id/wtnbmtk">Wantedly</a>
 					</li>
 				</ul>
 			</nav>
@@ -68,28 +66,27 @@
 	}
 	header {
 		container: header / inline-size;
-		margin: 4px 4px 0;
+		margin: 8px 8px 0;
 	}
 	header > div {
 		max-width: 800px;
-		background: rgba(255, 0, 0, 0.5);
-		backdrop-filter: blur(10px);
-		height: 50px;
-		line-height: 50px;
-		border-radius: 25px;
+		background: rgba(255, 255, 255, 0.5);
+		backdrop-filter: blur(5px);
+		height: 40px;
+		line-height: 40px;
+		border-radius: 20px;
 		margin: auto;
-		box-shadow: 2px 4px 4px 0px #222;
 	}
 	header > div > a {
 		display: block;
-		height: 50px;
+		height: 40px;
 		width: fit-content;
 	}
 	.btn {
 		display: block;
 		position: absolute;
 		inset: 0 8px 0 auto;
-		height: 50px;
+		height: 40px;
 		cursor: pointer;
 		background-color: transparent;
 		border: none;
@@ -98,7 +95,6 @@
 	}
 	.margin {
 		height: 50px;
-		background: black;
 	}
 
 	@media (width >= 800px) {
