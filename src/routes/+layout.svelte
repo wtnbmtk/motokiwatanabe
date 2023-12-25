@@ -7,18 +7,18 @@
 
 	let dialog: HTMLDialogElement;
 
-	function openDialog() {
+	const openDialog = () => {
 		dialog.showModal();
-		dialog.addEventListener('click', function (/** @type {{ target: any; }} */ event) {
+		dialog.addEventListener('click', (event) => {
 			if (event.target === dialog) {
 				dialog.close();
 			}
 		});
-	}
+	};
 
-	function closeDialog() {
+	const closeDialog = () => {
 		dialog.close();
-	}
+	};
 
 	// @ts-ignore
 	import Headroom from 'svelte-headroom';
