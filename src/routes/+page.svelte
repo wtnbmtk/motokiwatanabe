@@ -19,15 +19,16 @@
 	<section>
 		<div class="contain">
 			<h2>PROFILE</h2>
-			<div class="wrap">
+			<div class="profile">
 				<div class="profile-left">
 					<img class="profile-img" src={profile} alt="profile" />
 					<div class="name"><Logo /></div>
 				</div>
 				<div>
-					<h4>Webエンジニア：モトキ</h4>
+					<small>web engineer</small>
+					<p class="name">Motoki Watanabe</p>
 					<p>
-						東京工芸大学卒。同大学在学中にWeb開発のスキルを身に付け始める。現在では、HTML、CSS、JavaScriptをはじめ、Next.jsやGitなどのスキルを身に付け、効率的なWeb開発を得意としている。また、UI/UXデザインやSEOの知識を持っており、ユーザーが使いやすく、魅力的なWebサイト制作が行える。実績としては制作依頼を通して実践的なWeb開発の経験を積んでおり、ユーザーファーストな開発で評価されてきた。
+						渡辺元己はWebエンジニアリングのスキルを有した個人開発者です。私のルーツは大学時代に取り組んだヒューマンインターフェースの研究活動です。研究ではWebサイトのインターフェースの最適化を行っていました。この活動から私のWebエンジニアリングが始まり、現在の個人開発に繋がっていきました。得意としているのはフロントエンド領域で、人間の五感に響くデザインを構築することが開発における最大のミッションです。また、最先端の技術を使用することでハイパフォーマンスな成果物を得ることにも注力しています。それは、ユーザーファーストな成果物を生み出すことで社会に貢献することが私の目指している目標だからです。
 					</p>
 				</div>
 			</div>
@@ -78,6 +79,13 @@
 		display: grid;
 		place-content: center;
 	}
+	.profile {
+		display: grid;
+		gap: 2rem;
+	}
+	.profile > div {
+		margin: auto;
+	}
 	h1 {
 		margin: 0;
 		font-size: xxx-large;
@@ -92,13 +100,15 @@
 		max-height: 400px;
 		border-radius: 50%;
 	}
+	.name {
+		margin: 0;
+	}
 	.profile-left {
 		width: 200px;
-		margin: auto;
 	}
 	.profile-img {
 		width: 150px;
-		margin: 0 auto 1rem;
+		margin: 1rem auto;
 	}
 	a {
 		color: #000;
@@ -106,6 +116,12 @@
 	@media (width >= 800px) {
 		.wrap {
 			grid-template-columns: auto auto;
+		}
+		.profile {
+			grid-template-columns: auto auto;
+		}
+		.profile > div {
+			margin: 0;
 		}
 	}
 </style>
