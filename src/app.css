@@ -32,8 +32,9 @@ html:has(dialog[open]) {
 	overflow: hidden;
 }
 body {
+	color: #fff;
+	background-color: #bfcdb2;
 	font: 1.2em 'ZenOldMincho-Regular', serif;
-
 	margin: 0;
 	/* font: 1.2em "Voto Serif GX", serif;
   	font-variation-settings: "wght" 100, "wdth" 80, "opsz" 50; */
@@ -75,10 +76,10 @@ picture {
 }
 .logo svg {
 	margin-left: 16px;
-	padding: 5px;
+	padding: 8px 0;
 	height: 40px;
 	width: auto;
-	fill: #000;
+	fill: #fff;
 	fill-opacity: 1;
 }
 .name svg {
@@ -92,9 +93,9 @@ picture {
 main {
 }
 section {
-	max-width: 800px;
+	max-width: 1000px;
 	margin: 1rem auto 0;
-	padding: 1rem;
+	padding: 8px;
 }
 section:first-child {
 	margin: 0 auto;
@@ -103,6 +104,15 @@ section:first-child::before {
 	content: '';
 	display: block;
 	margin-top: 50px;
+}
+.contain {
+	background-color: #95ab9b;
+	border-radius: 16px;
+	padding: 8px;
+}
+.contain > * {
+	max-width: 900px;
+	margin: 0 auto 1rem;
 }
 dl {
 	display: grid;

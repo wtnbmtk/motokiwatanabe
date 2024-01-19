@@ -70,7 +70,7 @@
 	}
 	header > div {
 		max-width: 800px;
-		background: rgba(255, 255, 255, 0.5);
+		background-color: #29323c;
 		backdrop-filter: blur(5px);
 		height: 40px;
 		line-height: 40px;
@@ -90,8 +90,9 @@
 		cursor: pointer;
 		background-color: transparent;
 		border: none;
-		color: #000;
+		color: #fff;
 		font-family: inherit;
+		margin-right: 16px;
 	}
 	.margin {
 		height: 50px;

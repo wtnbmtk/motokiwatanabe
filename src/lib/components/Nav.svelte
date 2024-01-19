@@ -36,17 +36,21 @@
 		text-decoration: none;
 		display: inline-block;
 		padding: 0 1rem;
-		color: #000;
+		color: #fff;
 	}
 	a:hover {
 		filter: brightness(1.4); /* ホバー時に少し明るくする */
 		text-decoration: underline;
 	}
-	.active {
-		background-color: #000;
-	}
 	.active a {
-		color: #fff;
+		position: relative;
+	}
+	.active a::after {
+		position: relative;
+		content: '';
+		display: block;
+		border-bottom: solid 2px;
+		top: -6px;
 	}
 	#global-nav,
 	#headerSNS {

@@ -20,17 +20,16 @@
 		<div class="contain">
 			<h2>PROFILE</h2>
 			<div class="profile">
-				<div class="profile-left">
-					<img class="profile-img" src={profile} alt="profile" />
-					<div class="name"><Logo /></div>
-				</div>
 				<div>
-					<small>web engineer</small>
-					<p class="name">Motoki Watanabe</p>
-					<p>
-						渡辺元己はWebエンジニアリングのスキルを有した個人開発者です。私のルーツは大学時代に取り組んだヒューマンインターフェースの研究活動です。研究ではWebサイトのインターフェースの最適化を行っていました。この活動から私のWebエンジニアリングが始まり、現在の個人開発に繋がっていきました。得意としているのはフロントエンド領域で、人間の五感に響くデザインを構築することが開発における最大のミッションです。また、最先端の技術を使用することでハイパフォーマンスな成果物を得ることにも注力しています。それは、ユーザーファーストな成果物を生み出すことで社会に貢献することが私の目指している目標だからです。
-					</p>
+					<img class="profile-img" src={profile} alt="profile" />
+					<div>
+						<small>web engineer</small>
+						<p class="name">Motoki Watanabe</p>
+					</div>
 				</div>
+				<p>
+					私はWebエンジニアリングのスキルを有した個人開発者です。ルーツは大学時代に取り組んだヒューマンインターフェースの研究活動で、研究はWebサイトのインターフェース最適化を行っていました。この活動から私のWebエンジニアリングが始まり、現在の個人開発に繋がっていきました。得意としているのはフロントエンド領域で、開発では人間の五感に響くインターフェース構築を心掛けています。また、最先端の技術を使用することでハイパフォーマンスな成果物を得ることにも注力しています。私が目指している目標は、ユーザーファーストな成果物を生み出すことで社会に貢献することです。その為に私はWebエンジニアリングのスキルを磨いています。
+				</p>
 			</div>
 		</div>
 	</section>
@@ -63,14 +62,14 @@
 </main>
 
 <style>
-	.cover {
+	/* .cover {
 		background-image: linear-gradient(
 			58.2deg,
 			rgba(40, 91, 212, 0.73) -3%,
 			rgba(171, 53, 163, 0.45) 49.3%,
 			rgba(255, 204, 112, 0.37) 97.7%
 		);
-	}
+	} */
 	.wrap {
 		display: grid;
 		gap: 2rem;
@@ -80,11 +79,10 @@
 		place-content: center;
 	}
 	.profile {
-		display: grid;
-		gap: 2rem;
 	}
 	.profile > div {
-		margin: auto;
+		display: grid;
+		gap: 2rem;
 	}
 	h1 {
 		margin: 0;
@@ -102,26 +100,25 @@
 	}
 	.name {
 		margin: 0;
-	}
-	.profile-left {
-		width: 200px;
+		font-size: 1.4rem;
 	}
 	.profile-img {
-		width: 150px;
-		margin: 1rem auto;
+		width: 50px;
+		height: 50px;
+		object-fit: cover;
+		border-radius: 50%;
+		margin: auto;
 	}
 	a {
-		color: #000;
+		color: #fff;
 	}
 	@media (width >= 800px) {
 		.wrap {
 			grid-template-columns: auto auto;
 		}
-		.profile {
-			grid-template-columns: auto auto;
-		}
 		.profile > div {
-			margin: 0;
+			grid-template-columns: repeat(2, auto);
+			place-content: start;
 		}
 	}
 </style>
