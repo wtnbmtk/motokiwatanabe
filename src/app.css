@@ -79,14 +79,12 @@ picture {
 	padding: 8px 0;
 	height: 40px;
 	width: auto;
-	fill: #fff;
-	fill-opacity: 1;
 }
-.name svg {
-	height: auto;
-	width: 200px;
-	fill: #000;
-	fill-opacity: 1;
+.profile-img svg {
+	width: auto;
+	height: 60px;
+	object-fit: cover;
+	margin: auto;
 }
 
 /* MAIN */

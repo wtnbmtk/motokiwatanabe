@@ -8,7 +8,7 @@
 		<section>
 			<div class="wrap">
 				<hgroup>
-					<h1>This<br />Creativity<br />Is True.</h1>
+					<h1>Sound<br />Capsule</h1>
 				</hgroup>
 				<div class="canvas">
 					<canvas id="glcanvas" width="300px" height="300px" />
@@ -18,24 +18,23 @@
 	</div>
 	<section>
 		<div class="contain">
-			<h2>PROFILE</h2>
+			<h2>About</h2>
 			<div class="profile">
 				<div>
-					<img class="profile-img" src={profile} alt="profile" />
-					<div>
-						<small>web engineer</small>
-						<p class="name">Motoki Watanabe</p>
-					</div>
+					<div class="profile-img"><Logo /></div>
 				</div>
 				<p>
-					私はWebエンジニアリングのスキルを有した個人開発者です。ルーツは大学時代に取り組んだヒューマンインターフェースの研究活動で、研究はWebサイトのインターフェース最適化を行っていました。この活動から私のWebエンジニアリングが始まり、現在の個人開発に繋がっていきました。得意としているのはフロントエンド領域で、開発では人間の五感に響くインターフェース構築を心掛けています。また、最先端の技術を使用することでハイパフォーマンスな成果物を得ることにも注力しています。私が目指している目標は、ユーザーファーストな成果物を生み出すことで社会に貢献することです。その為に私はWebエンジニアリングのスキルを磨いています。
+					Dig &
+					Gatherは世界に溢れる様々な音楽を探索、収集して紹介するサイトです。幅広い年代、ジャンルの音楽を届けることがDig
+					&
+					Gatheのミッションです。アーティストの歴史や楽曲の情報を整理して紹介する記事を作成していきます。
 				</p>
 			</div>
 		</div>
 	</section>
 	<section>
 		<div class="contain">
-			<h2>PORTFOLIO</h2>
+			<h2>Article</h2>
 			<p>Webサイト</p>
 			<ul>
 				<li>
@@ -81,15 +80,15 @@
 	.profile {
 	}
 	.profile > div {
-		display: grid;
-		gap: 2rem;
+		width: fit-content;
+		margin: auto;
 	}
 	h1 {
 		margin: 0;
 		font-size: xxx-large;
 		color: white;
 	}
-	canvas {
+	.canvas {
 		position: relative;
 		aspect-ratio: 1/1;
 		width: 100%;
@@ -98,16 +97,33 @@
 		max-height: 400px;
 		border-radius: 50%;
 	}
+	.canvas::before,
+	.canvas::after {
+		position: absolute;
+		content: '';
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+	.canvas::before {
+		top: 0;
+		left: 0;
+		border-top: 2px solid black;
+		border-left: 2px solid black;
+	}
+	.canvas::after {
+		right: 0;
+		bottom: 0;
+		border-right: 2px solid black;
+		border-bottom: 2px solid black;
+	}
 	.name {
 		margin: 0;
 		font-size: 1.4rem;
 	}
 	.profile-img {
-		width: 50px;
-		height: 50px;
-		object-fit: cover;
-		border-radius: 50%;
-		margin: auto;
+		width: fit-content;
+		height: 60px;
 	}
 	a {
 		color: #fff;
@@ -117,8 +133,6 @@
 			grid-template-columns: auto auto;
 		}
 		.profile > div {
-			grid-template-columns: repeat(2, auto);
-			place-content: start;
 		}
 	}
 </style>
