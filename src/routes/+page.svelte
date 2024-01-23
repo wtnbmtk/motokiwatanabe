@@ -1,6 +1,7 @@
 <script lang="ts">
 	import profile from '$lib/assets/2tone_profile.png';
 	import Logo from '$lib/components/Logo.svelte';
+	import Wave from '$lib/components/Wave.svelte';
 </script>
 
 <main>
@@ -58,9 +59,17 @@
 			</ul>
 		</div>
 	</section>
+	<div class="wave">
+		<Wave />
+	</div>
 </main>
 
 <style>
+	.wave {
+		width: fit-content;
+		margin: auto;
+	}
+
 	/* .cover {
 		background-image: linear-gradient(
 			58.2deg,
@@ -106,10 +115,10 @@
 		height: 100%;
 	}
 	.canvas::before {
-		top: 0;
-		left: 0;
-		border-top: 2px solid black;
-		border-left: 2px solid black;
+		height: 300px;
+		width: 100%;
+		display: block;
+		background: repeating-radial-gradient(transparent, #bfcdb2 152px);
 	}
 	.canvas::after {
 		right: 0;
