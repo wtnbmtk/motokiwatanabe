@@ -1,7 +1,8 @@
 <script lang="ts">
 	import profile from '$lib/assets/2tone_profile.png';
 	import Logo from '$lib/components/Logo.svelte';
-	import Wave from '$lib/components/Wave.svelte';
+	import Wave8 from '$lib/components/Wave8.svelte';
+	import Wave4 from '$lib/components/Wave4.svelte';
 </script>
 
 <main>
@@ -58,16 +59,17 @@
 				</li>
 			</ul>
 		</div>
+		<div class="wave">
+			<Wave4 />
+			<Wave8 />
+		</div>
 	</section>
-	<div class="wave">
-		<Wave />
-	</div>
 </main>
 
 <style>
 	.wave {
-		width: fit-content;
-		margin: auto;
+		position: relative;
+		display: grid;
 	}
 
 	/* .cover {
@@ -99,12 +101,7 @@
 	}
 	.canvas {
 		position: relative;
-		aspect-ratio: 1/1;
-		width: 100%;
-		height: auto;
-		max-width: 400px;
-		max-height: 400px;
-		border-radius: 50%;
+		margin: auto;
 	}
 	.canvas::before,
 	.canvas::after {
@@ -115,16 +112,12 @@
 		height: 100%;
 	}
 	.canvas::before {
-		height: 300px;
-		width: 100%;
-		display: block;
-		background: repeating-radial-gradient(transparent, #bfcdb2 152px);
+		height: 100%;
+		background: repeating-radial-gradient(transparent, #bfcdb2 150px);
+		transform: scale(1.1);
 	}
-	.canvas::after {
-		right: 0;
-		bottom: 0;
-		border-right: 2px solid black;
-		border-bottom: 2px solid black;
+	canvas {
+		border-radius: 50%;
 	}
 	.name {
 		margin: 0;
