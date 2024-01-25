@@ -88,13 +88,7 @@ picture {
 	margin: auto;
 }
 .wave svg {
-}
-.wave svg:nth-child(1) {
-}
-.wave svg:nth-child(2) {
-	position: absolute;
-	bottom: -10px;
-	left: 10px;
+	width: 100%;
 }
 
 /* MAIN */

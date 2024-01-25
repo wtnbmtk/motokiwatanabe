@@ -61,15 +61,13 @@
 		</div>
 		<div class="wave">
 			<Wave4 />
-			<Wave8 />
 		</div>
 	</section>
 </main>
 
 <style>
 	.wave {
-		position: relative;
-		display: grid;
+		height: 200px;
 	}
 
 	/* .cover {
