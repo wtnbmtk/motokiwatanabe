@@ -1,8 +1,8 @@
 <script lang="ts">
 	import profile from '$lib/assets/2tone_profile.png';
 	import Logo from '$lib/components/Logo.svelte';
-	import Wave8 from '$lib/components/Wave8.svelte';
-	import Wave4 from '$lib/components/Wave4.svelte';
+	import WavePerpendicular from '$lib/components/WavePerpendicular.svelte';
+	import WaveLines from '$lib/components/WaveLines.svelte';
 </script>
 
 <main>
@@ -60,7 +60,19 @@
 			</ul>
 		</div>
 		<div class="wave">
-			<Wave4 />
+			<WavePerpendicular />
+			<WaveLines />
+		</div>
+		<div class="to-open">
+			<span />
+			<span />
+			<span />
+			<span />
+			<span />
+		</div>
+		<div class="to-close">
+			<span />
+			<span />
 		</div>
 	</section>
 </main>
@@ -127,6 +139,58 @@
 	}
 	a {
 		color: #fff;
+	}
+	.to-open,
+	.to-close {
+		position: relative;
+		height: 26px;
+		width: 30px;
+	}
+	.to-open span,
+	.to-close span {
+		position: absolute;
+		display: block;
+		height: 2px;
+		width: 30px;
+		background: #000;
+	}
+	.to-open span:nth-child(2),
+	.to-open span:nth-child(4) {
+		transform: rotate(25deg);
+		right: 0px;
+		border-radius: 1px;
+	}
+	.to-open span:first-child,
+	.to-open span:nth-child(3),
+	.to-open span:last-child {
+		width: 28px;
+	}
+	.to-open span:first-child {
+		right: 0;
+	}
+	.to-open span:nth-child(2) {
+		top: 6px;
+	}
+	.to-open span:nth-child(3) {
+		inset: 0;
+		width: 26px;
+		margin: auto;
+	}
+	.to-open span:nth-child(4) {
+		bottom: 6px;
+	}
+	.to-open span:last-child {
+		bottom: 0;
+	}
+	.to-close span:first-child {
+		inset: 0;
+		margin: auto;
+		transform: rotate(45deg);
+	}
+	.to-close span:last-child {
+		inset: 0;
+		margin: auto;
+		transform: rotate(135deg);
 	}
 	@media (width >= 800px) {
 		.wrap {
