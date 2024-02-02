@@ -12,9 +12,7 @@
 				<hgroup>
 					<h1>Sound<br />Capsule</h1>
 				</hgroup>
-				<div class="canvas">
-					<canvas id="glcanvas" width="300px" height="300px" />
-				</div>
+				<div />
 			</div>
 		</section>
 	</div>
