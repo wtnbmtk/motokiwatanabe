@@ -25,3 +25,6 @@
 	</section>
 	<small class="copyright">© 2023 Motoki Watanabe</small>
 </footer>
+
+<style>
+</style>

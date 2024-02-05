@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fade } from 'svelte/transition';
 	import { page } from '$app/stores';
 	import { createEventDispatcher } from 'svelte';
 
@@ -49,19 +50,40 @@
 		padding: 0;
 	}
 	dialog {
+		position: fixed;
+		inset: 0;
 		color: #333333;
 		margin: auto;
 		padding: 0;
+		border: none;
+		animation: slide-down 0.7s ease-out;
 		pointer-events: none;
-		opacity: 0;
-		transition: opacity 1s;
 	}
 	dialog[open] {
-		opacity: 1;
+		animation: slide-up 0.7s ease-out;
 		pointer-events: inherit;
 	}
 	dialog::backdrop {
 		background: rgba(0, 0, 0, 0.5);
+	}
+	@keyframes slide-up {
+		from {
+			transform: translateY(100%);
+			opacity: 0;
+		}
+		to {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+	@keyframes slide-down {
+		from {
+			display: block;
+		}
+		to {
+			transform: translateY(100%);
+			opacity: 0;
+		}
 	}
 	h2 {
 		width: 100%;

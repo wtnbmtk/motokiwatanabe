@@ -19,39 +19,60 @@
 		dialog.close();
 	};
 
-	let y: number;
+	let y = 0;
+	let header = null;
 </script>
 
-{#if y > 100}
-	<header transition:fade id="header">
+<header bind:this={header} class="relative">
+	<div>
+		<a data-sveltekit-reload href="/"><div class="logo"><Logo /></div></a>
+		<button id="menu-btn" class="btn" type="button" on:click={openDialog}>MENU</button>
+		<Nav />
+	</div>
+</header>
+
+{#if y > 48}
+	<header transition:fade class="fixed">
 		<div>
 			<a data-sveltekit-reload href="/"><div class="logo"><Logo /></div></a>
 			<button id="menu-btn" class="btn" type="button" on:click={openDialog}>MENU</button>
 			<Nav />
-			<Dialog bind:dialog on:closeDialog={closeDialog} />
 		</div>
 	</header>
 {/if}
-
 <svelte:window bind:scrollY={y} />
 
+<Dialog bind:dialog on:closeDialog={closeDialog} />
+
 <style>
-	header {
-		position: fixed;
+	header.relative,
+	header.fixed {
 		width: 100%;
 		padding: 8px 8px 0;
 		transition: 0.5s;
 	}
-	header > div {
+	header.fixed {
+		position: fixed;
+		top: 0;
+	}
+	header.relative > div,
+	header.fixed > div {
+		position: relative;
 		max-width: 800px;
-		background-color: #29323c;
-		backdrop-filter: blur(5px);
 		height: 40px;
 		line-height: 40px;
 		border-radius: 20px;
 		margin: auto;
 	}
-	header > div > a {
+	header.relative > div {
+		background-color: #29323c;
+	}
+	header.fixed > div {
+		background: rgba(255, 255, 255, 0.5);
+		backdrop-filter: blur(5px);
+	}
+	header.relative > div > a,
+	header.fixed > div > a {
 		display: block;
 		height: 40px;
 		width: fit-content;
