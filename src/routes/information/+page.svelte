@@ -1,6 +1,6 @@
 <main>
 	<section>
-		<h2>INFORMATION</h2>
+		<h1>INFORMATION</h1>
 	</section>
 </main>
 

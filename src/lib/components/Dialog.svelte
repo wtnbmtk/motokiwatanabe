@@ -21,40 +21,33 @@
 	<div class="inner">
 		<h2>MENU</h2>
 		<nav>
-			<ul>
-				{#each pages as a}
-					{#if a.path === $page.url.pathname}
-						<li class="active"><a href={a.path} on:click={clickClose}>{a.name}</a></li>
-					{:else}
-						<li><a data-sveltekit-reload href={a.path} on:click={clickClose}>{a.name}</a></li>
-					{/if}
-				{/each}
-			</ul>
-		</nav>
-		<nav>
-			<ul>
-				<li>
-					<a href="mailto:wtnbmtk7@gmail.com"><span class="material-icons">mail</span></a>
-				</li>
-			</ul>
+			{#each pages as a}
+				{#if a.path === $page.url.pathname}
+					<a class="active" href={a.path}>{a.name}</a>
+				{:else}
+					<a class="passive" data-sveltekit-reload href={a.path}>{a.name}</a>
+				{/if}
+			{/each}
+			<a class="mail" href="mailto:wtnbmtk7@gmail.com"
+				><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+					><path
+						fill="currentColor"
+						d="m20 8l-8 5l-8-5V6l8 5l8-5m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2"
+					/></svg
+				></a
+			>
 		</nav>
 		<form method="dialog">
-			<button class="close" on:click={() => dialog.close()}>CLOSE</button>
+			<button on:click={() => dialog.close()}>CLOSE</button>
 		</form>
 	</div>
 </dialog>
 
 <style>
-	ul {
-		margin: 0;
-		padding: 0;
-	}
 	dialog {
 		position: fixed;
 		inset: 0;
-		color: #333333;
 		margin: auto;
-		padding: 0;
 		border: none;
 		animation: slide-down 0.7s ease-out;
 		pointer-events: none;
@@ -85,20 +78,23 @@
 			opacity: 0;
 		}
 	}
+	.inner {
+		padding: 1rem 2rem;
+	}
 	h2 {
 		width: 100%;
 		text-align: center;
 	}
-	li {
-		list-style: none;
-		margin: 1rem;
+	nav {
+		display: grid;
+		gap: 1rem;
 	}
 	a {
 		display: block;
 		color: black;
 		text-decoration: none;
 		text-align: center;
-		padding: 0 4rem;
+		padding: 0 2rem;
 		cursor: pointer;
 	}
 	a:hover {
@@ -106,16 +102,28 @@
 	}
 	.active {
 		background-color: black;
-	}
-	.active a {
 		color: white;
 	}
-	.close {
+	.mail svg {
+		position: relative;
+		inset: 2px 0;
+		margin: auto;
+	}
+	form {
+		margin: 1rem 0 0;
+	}
+	button {
 		display: block;
-		margin: 1rem auto;
+		margin: auto;
 		cursor: pointer;
 		background-color: transparent;
 		border: none;
 		font-family: inherit;
+		font-size: inherit;
+	}
+	@media (width >= 600px) {
+		dialog {
+			display: none;
+		}
 	}
 </style>

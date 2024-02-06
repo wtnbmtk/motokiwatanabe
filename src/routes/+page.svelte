@@ -5,7 +5,7 @@
 	import WaveLines from '$lib/components/WaveLines.svelte';
 </script>
 
-<main>
+<main id="top">
 	<div class="cover">
 		<section>
 			<div class="wrap">
@@ -38,22 +38,48 @@
 			<p>Webサイト</p>
 			<ul>
 				<li>
-					<a href="https://gamers-world.pages.dev/" target="_blank"> Gamers World </a>
-					<span class="material-icons">open_in_new</span>
+					<a href="https://gamers-world.pages.dev/" target="_blank">
+						Gamers World<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="1em"
+							height="1em"
+							viewBox="0 0 24 24"
+							><path fill="currentColor" d="M5 17.59L15.59 7H9V5h10v10h-2V8.41L6.41 19z" /></svg
+						></a
+					>
 				</li>
 				<li>
-					<a href="https://gallery-site.pages.dev/" target="_blank"> Photo Gallery </a>
-					<span class="material-icons">open_in_new</span>
+					<a href="https://gallery-site.pages.dev/" target="_blank">
+						Photo Gallery<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="1em"
+							height="1em"
+							viewBox="0 0 24 24"
+							><path fill="currentColor" d="M5 17.59L15.59 7H9V5h10v10h-2V8.41L6.41 19z" /></svg
+						></a
+					>
 				</li>
 				<li>
 					<a href="https://utsunomiya-apartment-brillante.pages.dev/" target="_blank">
-						宇都宮アパートメント「ブリランテ」
-					</a>
-					<span class="material-icons">open_in_new</span>
+						宇都宮アパートメント「ブリランテ」<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="1em"
+							height="1em"
+							viewBox="0 0 24 24"
+							><path fill="currentColor" d="M5 17.59L15.59 7H9V5h10v10h-2V8.41L6.41 19z" /></svg
+						></a
+					>
 				</li>
 				<li>
-					<a href="https://webdachi.com/" target="_blank"> Webdachi </a>
-					<span class="material-icons">open_in_new</span>
+					<a href="https://webdachi.com/" target="_blank">
+						Webdachi<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="1em"
+							height="1em"
+							viewBox="0 0 24 24"
+							><path fill="currentColor" d="M5 17.59L15.59 7H9V5h10v10h-2V8.41L6.41 19z" /></svg
+						></a
+					>
 				</li>
 			</ul>
 		</div>
@@ -79,6 +105,9 @@
 	.wave {
 		height: 200px;
 	}
+	.wave :global(svg) {
+		width: 100%;
+	}
 
 	/* .cover {
 		background-image: linear-gradient(
@@ -96,10 +125,15 @@
 		display: grid;
 		place-content: center;
 	}
-	.profile {
-	}
 	.profile > div {
 		width: fit-content;
+		margin: auto;
+	}
+	.profile > div :global(svg) {
+		width: 100%;
+		height: auto;
+		height: 60px;
+		object-fit: cover;
 		margin: auto;
 	}
 	h1 {
@@ -137,6 +171,14 @@
 	}
 	a {
 		color: #fff;
+	}
+	a:hover {
+		text-decoration: underline;
+	}
+	a svg {
+		position: relative;
+		inset: 4px 0;
+		margin: auto;
 	}
 	.to-open,
 	.to-close {
