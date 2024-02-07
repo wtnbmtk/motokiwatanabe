@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { fade } from 'svelte/transition';
 	import { page } from '$app/stores';
 	import { createEventDispatcher } from 'svelte';
 
@@ -23,9 +22,9 @@
 		<nav>
 			{#each pages as a}
 				{#if a.path === $page.url.pathname}
-					<a class="active" href={a.path}>{a.name}</a>
+					<a class="active" href={a.path} on:click={clickClose}>{a.name}</a>
 				{:else}
-					<a class="passive" data-sveltekit-reload href={a.path}>{a.name}</a>
+					<a class="passive" href={a.path} on:click={clickClose}>{a.name}</a>
 				{/if}
 			{/each}
 			<a class="mail" href="mailto:wtnbmtk7@gmail.com"
@@ -38,7 +37,7 @@
 			>
 		</nav>
 		<form method="dialog">
-			<button on:click={() => dialog.close()}>CLOSE</button>
+			<button on:click={clickClose}>CLOSE</button>
 		</form>
 	</div>
 </dialog>

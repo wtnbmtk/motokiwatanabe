@@ -24,7 +24,7 @@
 
 <header>
 	<div>
-		<a data-sveltekit-reload href="/"><div class="logo"><Logo /></div></a>
+		<a data-sveltekit-reload href="/"><Logo /></a>
 		<button id="menu-btn" class="btn" type="button" on:click={openDialog}>MENU</button>
 		<Nav />
 	</div>
