@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 
 	const pages = [
+		{ name: 'About', path: '/about' },
 		{ name: 'Article', path: '/ariticle' },
 		{ name: 'Contact', path: '/contact' },
 		{ name: 'Infomation', path: '/information' }
@@ -13,7 +14,7 @@
 		{#if a.path === $page.url.pathname}
 			<a class="active" href={a.path}>{a.name}</a>
 		{:else}
-			<a class="passive" data-sveltekit-reload href={a.path}>{a.name}</a>
+			<a class="passive" href={a.path}>{a.name}</a>
 		{/if}
 	{/each}
 	<a class="mail" href="mailto:wtnbmtk7@gmail.com"

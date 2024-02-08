@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { createEventDispatcher } from 'svelte';
+	import { fade } from 'svelte/transition';
 
 	const pages = [
 		{
@@ -20,82 +20,173 @@
 			path: '/ariticle',
 			style: '--index: 2;',
 			d: 'M7.25 3.688a8.035 8.035 0 0 0-4.872-.523A.48.48 0 0 0 2 3.64v7.994c0 .345.342.588.679.512a6.02 6.02 0 0 1 4.571.81V3.688ZM8.75 12.956a6.02 6.02 0 0 1 4.571-.81c.337.075.679-.167.679-.512V3.64a.48.48 0 0 0-.378-.475 8.034 8.034 0 0 0-4.872.523v9.268Z'
-		},
+		}
+	];
+
+	const pages2 = [
 		{
 			name: 'CONTACT',
 			path: '/contact',
-			style: '--index: 3;',
+			style: '--index: 0;',
 			d: 'M1 8.74c0 .983.713 1.825 1.69 1.943.764.092 1.534.164 2.31.216v2.351a.75.75 0 0 0 1.28.53l2.51-2.51c.182-.181.427-.286.684-.294a44.298 44.298 0 0 0 3.837-.293C14.287 10.565 15 9.723 15 8.74V4.26c0-.983-.713-1.825-1.69-1.943a44.447 44.447 0 0 0-10.62 0C1.712 2.435 1 3.277 1 4.26v4.482ZM5.5 6.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm2.5 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm3.5 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z'
 		},
 		{
 			name: 'INFO',
 			path: '/information',
-			style: '--index: 4;',
+			style: '--index: 1;',
 			d: 'M15 8A7 7 0 1 1 1 8a7 7 0 0 1 14 0ZM9 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM6.75 8a.75.75 0 0 0 0 1.5h.75v1.75a.75.75 0 0 0 1.5 0v-2.5A.75.75 0 0 0 8.25 8h-1.5Z'
 		}
 	];
 
-	export let dialog: HTMLDialogElement;
-	let anchor: HTMLAnchorElement;
+	let dialog: HTMLDialogElement;
 
-	const dispatch = createEventDispatcher();
-	const clickClose = () => {
-		dispatch('closeDialog');
+	const openDialog = () => {
+		dialog.showModal();
+		dialog.addEventListener('click', (event) => {
+			if (event.target === dialog) {
+				dialog.close();
+			}
+		});
 	};
+
+	const closeDialog = () => {
+		dialog.close();
+	};
+
+	let y = 0;
 </script>
 
+{#if y > 48}
+	<button on:click={openDialog} transition:fade class="open">MENU</button>
+{/if}
+<svelte:window bind:scrollY={y} />
 <dialog bind:this={dialog}>
 	<div class="inner">
 		<nav class="menu">
-			{#each pages as a}
-				{#if a.path === $page.url.pathname}
-					<a bind:this={anchor} on:click={clickClose} class="active" href={a.path} style={a.style}
-						><svg
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 16 16"
-							fill="currentColor"
-							class="w-4 h-4"
+			<div>
+				{#each pages as a}
+					{#if a.path === $page.url.pathname}
+						<a on:click={closeDialog} class="active" href={a.path} style={a.style}
+							><svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 16 16"
+								fill="currentColor"
+								class="w-4 h-4"
+							>
+								<path fill-rule="evenodd" d={a.d} /></svg
+							>{a.name}</a
 						>
-							<path fill-rule="evenodd" d={a.d} /></svg
-						>{a.name}</a
-					>
-				{:else}
-					<a bind:this={anchor} on:click={clickClose} class="passive" href={a.path} style={a.style}
-						><svg
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 16 16"
-							fill="currentColor"
-							class="w-4 h-4"
+					{:else}
+						<a on:click={closeDialog} class="passive" href={a.path} style={a.style}
+							><svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 16 16"
+								fill="currentColor"
+								class="w-4 h-4"
+							>
+								<path fill-rule="evenodd" d={a.d} /></svg
+							>{a.name}</a
 						>
-							<path fill-rule="evenodd" d={a.d} /></svg
-						>{a.name}</a
-					>
-				{/if}
-			{/each}
+					{/if}
+				{/each}
+			</div>
+			<div>
+				{#each pages2 as a}
+					{#if a.path === $page.url.pathname}
+						<a on:click={closeDialog} class="active" href={a.path} style={a.style}
+							><svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 16 16"
+								fill="currentColor"
+								class="w-4 h-4"
+							>
+								<path fill-rule="evenodd" d={a.d} /></svg
+							>{a.name}</a
+						>
+					{:else}
+						<a on:click={closeDialog} class="passive" href={a.path} style={a.style}
+							><svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 16 16"
+								fill="currentColor"
+								class="w-4 h-4"
+							>
+								<path fill-rule="evenodd" d={a.d} /></svg
+							>{a.name}</a
+						>
+					{/if}
+				{/each}
+			</div>
 		</nav>
+		<form method="dialog">
+			<button on:click={closeDialog} class="close"
+				><span />
+				<span /></button
+			>
+		</form>
 	</div>
 </dialog>
 
 <style>
-	dialog {
+	button.open,
+	button.close {
 		position: fixed;
+		inset: auto 8px 8px auto;
+		z-index: 1;
+		margin: auto;
+		font-size: xx-small;
+		width: 40px;
+		height: 40px;
+		border: none;
+		border-radius: 50%;
+		color: white;
+	}
+	button.open {
+		background: rgba(0, 0, 0, 0.2);
+		backdrop-filter: blur(2px);
+		font-family: inherit;
+	}
+	button.close {
+		background: #29323c;
+	}
+	button.close {
+		background: #29323c;
+	}
+	button.close span {
+		position: absolute;
+		display: block;
+		height: 2px;
+		width: 30px;
+		background: #fff;
+	}
+	button.close span:first-child {
 		inset: 0;
 		margin: auto;
-		width: 100%;
-		height: 100%;
+		transform: rotate(45deg);
+	}
+	button.close span:last-child {
+		inset: 0;
+		margin: auto;
+		transform: rotate(135deg);
+	}
+	dialog {
+		position: fixed;
+		inset: auto 0 0;
+		margin: 0;
 		border: none;
 		background: none;
-		animation: slide-down 0.7s ease-out;
 		pointer-events: none;
 	}
 	dialog[open] {
-		animation: slide-up 0.7s ease-out;
+		animation: fade-in 0.7s ease-out;
 		pointer-events: inherit;
 	}
 	dialog::backdrop {
-		background: none;
+		animation: fade-in 0.7s ease-out;
+		background: rgba(0, 0, 0, 0.5);
+		backdrop-filter: blur(5px);
 	}
-	@keyframes slide-up {
+	@keyframes fade-in {
 		from {
 			opacity: 0;
 		}
@@ -103,7 +194,7 @@
 			opacity: 1;
 		}
 	}
-	@keyframes slide-down {
+	@keyframes fade-out {
 		from {
 			display: block;
 			opacity: 1;
@@ -112,17 +203,13 @@
 			opacity: 0;
 		}
 	}
-	.menu {
-		position: absolute;
-		inset: auto 0 0;
-		margin: auto;
-		width: fit-content;
-	}
-	.menu a {
-		position: absolute;
+	.menu div:nth-of-type(1) a,
+	.menu div:nth-of-type(2) a {
+		position: fixed;
+		inset: auto 8px 8px auto;
 		margin: auto;
 		text-align: center;
-		font-size: 0.5rem;
+		font-size: xx-small;
 		color: white;
 		width: 60px;
 		height: 60px;
@@ -131,10 +218,18 @@
 		place-content: center;
 		cursor: pointer;
 		transition: background-color 0.3s;
-		--angle: calc(200deg + calc(140deg / 4 * var(--index)));
+	}
+	.menu div:nth-of-type(1) a {
+		--angle: calc(180deg + calc(90deg / 2 * var(--index)));
 		--x: calc(cos(var(--angle)) * 120px);
-		--y: calc(sin(var(--angle)) * 100px);
+		--y: calc(sin(var(--angle)) * 120px);
 		translate: calc(var(--x) - 50%) calc(var(--y) - 50%);
+	}
+	.menu div:nth-of-type(2) a {
+		--angle: calc(180deg + calc(90deg / 1 * var(--index)));
+		--x: calc(cos(var(--angle)) * 60px);
+		--y: calc(sin(var(--angle)) * 60px);
+		translate: calc(var(--x) - 25%) calc(var(--y) - 25%);
 	}
 	.menu a:hover {
 		background-color: #96aadc;
@@ -149,5 +244,13 @@
 	}
 	.passive {
 		background: #29323c;
+	}
+	@media (width >= 600px) {
+		dialog {
+			display: none;
+		}
+		button.open {
+			display: none;
+		}
 	}
 </style>
