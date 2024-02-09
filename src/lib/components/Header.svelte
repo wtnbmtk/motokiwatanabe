@@ -15,35 +15,34 @@
 </header>
 <Dialog />
 {#if y > 48}
-	<div transition:fade class:fixed={y > 48}>
-		<header>
-			<div>
-				<a href="/"><Logo /></a>
-				<Nav />
-			</div>
-		</header>
-		<Dialog />
-	</div>
+	<header transition:fade class:fixed={y > 48}>
+		<div>
+			<a href="/"><Logo /></a>
+			<Nav />
+		</div>
+	</header>
+	<Dialog />
 {/if}
 <svelte:window bind:scrollY={y} />
 
 <style>
 	header,
-	.fixed header {
+	header.fixed {
 		width: 100%;
-		padding: 8px 8px 0;
+		padding: 8px 16px 0;
 		transition: 0.5s;
 	}
 	header {
 		position: relative;
 		top: 0;
 	}
-	.fixed header {
+	header.fixed {
 		position: fixed;
 		top: 0;
+		z-index: 1;
 	}
 	header > div,
-	.fixed header > div {
+	header.fixed > div {
 		position: relative;
 		max-width: 800px;
 		height: 40px;
@@ -54,7 +53,7 @@
 	header > div {
 		background-color: #29323c;
 	}
-	.fixed header > div {
+	header.fixed > div {
 		background: rgba(0, 0, 0, 0.2);
 		backdrop-filter: blur(2px);
 	}

@@ -57,9 +57,12 @@
 </script>
 
 {#if y > 48}
-	<button on:click={openDialog} transition:fade class="open">MENU</button>
+	<div class="wrap">
+		<button on:click={openDialog} transition:fade class="open">MENU</button>
+	</div>
 {/if}
 <svelte:window bind:scrollY={y} />
+
 <dialog bind:this={dialog}>
 	<div class="inner">
 		<nav class="menu">
@@ -128,26 +131,28 @@
 </dialog>
 
 <style>
+	.wrap {
+		position: fixed;
+		inset: auto 0 0px;
+		margin: auto auto 8px;
+		height: 60px;
+		max-width: 984px;
+	}
 	button.open,
 	button.close {
-		position: fixed;
-		inset: auto 8px 8px auto;
+		position: absolute;
+		inset: auto 16px 0 auto;
 		z-index: 1;
-		margin: auto;
-		font-size: xx-small;
-		width: 40px;
-		height: 40px;
-		border: none;
+		width: 60px;
+		height: 60px;
 		border-radius: 50%;
 		color: white;
+		font-family: inherit;
+		font-size: small;
 	}
 	button.open {
 		background: rgba(0, 0, 0, 0.2);
 		backdrop-filter: blur(2px);
-		font-family: inherit;
-	}
-	button.close {
-		background: #29323c;
 	}
 	button.close {
 		background: #29323c;
@@ -171,8 +176,11 @@
 	}
 	dialog {
 		position: fixed;
-		inset: auto 0 0;
-		margin: 0;
+		inset: 0;
+		margin: auto auto 8px;
+		height: 100%;
+		width: 100%;
+		max-width: 984px;
 		border: none;
 		background: none;
 		pointer-events: none;
@@ -205,7 +213,7 @@
 	}
 	.menu div:nth-of-type(1) a,
 	.menu div:nth-of-type(2) a {
-		position: fixed;
+		position: absolute;
 		inset: auto 8px 8px auto;
 		margin: auto;
 		text-align: center;
@@ -217,16 +225,16 @@
 		display: grid;
 		place-content: center;
 		cursor: pointer;
-		transition: background-color 0.3s;
+		transition: all 0.5s;
 	}
 	.menu div:nth-of-type(1) a {
-		--angle: calc(180deg + calc(90deg / 2 * var(--index)));
+		--angle: calc(190deg + calc(70deg / 2 * var(--index)));
 		--x: calc(cos(var(--angle)) * 120px);
 		--y: calc(sin(var(--angle)) * 120px);
 		translate: calc(var(--x) - 50%) calc(var(--y) - 50%);
 	}
 	.menu div:nth-of-type(2) a {
-		--angle: calc(180deg + calc(90deg / 1 * var(--index)));
+		--angle: calc(190deg + calc(70deg / 1 * var(--index)));
 		--x: calc(cos(var(--angle)) * 60px);
 		--y: calc(sin(var(--angle)) * 60px);
 		translate: calc(var(--x) - 25%) calc(var(--y) - 25%);
@@ -244,13 +252,5 @@
 	}
 	.passive {
 		background: #29323c;
-	}
-	@media (width >= 600px) {
-		dialog {
-			display: none;
-		}
-		button.open {
-			display: none;
-		}
 	}
 </style>

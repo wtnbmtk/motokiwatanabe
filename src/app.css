@@ -59,6 +59,11 @@ p {
 a {
 	text-decoration: none;
 }
+button {
+	display: block;
+	background: none;
+	border: none;
+}
 ul {
 	padding: revert;
 }
@@ -74,12 +79,11 @@ picture {
 /* MAIN */
 
 main {
-	max-width: 1000px;
-	margin: auto;
-	padding: 0 8px;
 }
 section {
-	padding: 8px 0;
+	max-width: 984px;
+	margin: auto;
+	padding: 8px;
 }
 .contain {
 	background-color: #95ab9b;

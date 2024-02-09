@@ -54,10 +54,6 @@
 </script>
 
 <button on:click={openDialog} class="open">MENU</button>
-{#if y > 48}
-	<button on:click={openDialog} transition:fade class="open-fix">MENU</button>
-{/if}
-<svelte:window bind:scrollY={y} />
 <dialog bind:this={dialog}>
 	<div class="inner">
 		<h2>MENU</h2>
@@ -115,12 +111,12 @@
 		background: transparent;
 		border: none;
 		font-family: inherit;
-		font-size: 1rem;
+		font-size: small;
 		color: white;
 	}
 	button.open,
 	button.open-fix {
-		inset: 8px 24px auto auto;
+		inset: 8px 32px auto auto;
 		height: 40px;
 	}
 	button.open {
@@ -128,7 +124,7 @@
 	}
 	button.open-fix {
 		position: fixed;
-		z-index: 1;
+		z-index: 2;
 	}
 	button.close {
 		position: relative;
@@ -218,9 +214,10 @@
 		text-align: center;
 		padding: 0 2rem;
 		cursor: pointer;
+		transition: all 0.5s;
 	}
 	a:hover {
-		text-decoration: underline;
+		background: #96aadc;
 	}
 	.active {
 		background: #96aadc;
