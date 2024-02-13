@@ -103,33 +103,15 @@
 
 <style>
 	button.open,
-	button.open-fix,
 	button.close {
-		display: block;
 		margin: auto;
-		cursor: pointer;
-		background: transparent;
-		border: none;
-		font-family: inherit;
 		font-size: small;
 		color: white;
-	}
-	button.open,
-	button.open-fix {
-		inset: 8px 32px auto auto;
 		height: 40px;
-	}
-	button.open {
-		position: absolute;
-	}
-	button.open-fix {
-		position: fixed;
-		z-index: 2;
+		width: 40px;
 	}
 	button.close {
 		position: relative;
-		height: 40px;
-		width: 40px;
 	}
 	button.close span {
 		position: absolute;
@@ -241,8 +223,7 @@
 	}
 	@media (width >= 600px) {
 		dialog,
-		button.open,
-		button.open-fix {
+		button.open {
 			display: none;
 		}
 	}

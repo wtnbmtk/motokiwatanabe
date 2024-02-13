@@ -2,7 +2,6 @@
 	import { fade } from 'svelte/transition';
 	import Logo from '$lib/components/Logo.svelte';
 	import Nav from '$lib/components/Nav.svelte';
-	import Dialog from '$lib/components/Dialog.svelte';
 
 	let y = 0;
 </script>
@@ -13,7 +12,6 @@
 		<Nav />
 	</div>
 </header>
-<Dialog />
 {#if y > 48}
 	<header transition:fade class:fixed={y > 48}>
 		<div>
@@ -21,7 +19,6 @@
 			<Nav />
 		</div>
 	</header>
-	<Dialog />
 {/if}
 <svelte:window bind:scrollY={y} />
 

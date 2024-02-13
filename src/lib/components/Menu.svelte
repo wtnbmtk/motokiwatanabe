@@ -20,20 +20,17 @@
 			path: '/ariticle',
 			style: '--index: 2;',
 			d: 'M7.25 3.688a8.035 8.035 0 0 0-4.872-.523A.48.48 0 0 0 2 3.64v7.994c0 .345.342.588.679.512a6.02 6.02 0 0 1 4.571.81V3.688ZM8.75 12.956a6.02 6.02 0 0 1 4.571-.81c.337.075.679-.167.679-.512V3.64a.48.48 0 0 0-.378-.475 8.034 8.034 0 0 0-4.872.523v9.268Z'
-		}
-	];
-
-	const pages2 = [
+		},
 		{
 			name: 'CONTACT',
 			path: '/contact',
-			style: '--index: 0;',
-			d: 'M1 8.74c0 .983.713 1.825 1.69 1.943.764.092 1.534.164 2.31.216v2.351a.75.75 0 0 0 1.28.53l2.51-2.51c.182-.181.427-.286.684-.294a44.298 44.298 0 0 0 3.837-.293C14.287 10.565 15 9.723 15 8.74V4.26c0-.983-.713-1.825-1.69-1.943a44.447 44.447 0 0 0-10.62 0C1.712 2.435 1 3.277 1 4.26v4.482ZM5.5 6.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm2.5 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm3.5 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z'
+			style: '--index: 3;',
+			d: 'M1 8.74c0 .983.713 1.825 1.69 1.943.764.092 1.534.164 2.31.216v2.351a.75.75 0 0 0 1.28.53l2.51-2.51c.182-.181.427-.286.684-.294a44.298 44.298 0 0 0 3.837-.293C14.287 10.765 15 9.723 15 8.74V4.26c0-.983-.713-1.825-1.69-1.943a44.447 44.447 0 0 0-10.62 0C1.712 2.435 1 3.277 1 4.26v4.482ZM5.5 6.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm2.5 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm3.5 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z'
 		},
 		{
 			name: 'INFO',
 			path: '/information',
-			style: '--index: 1;',
+			style: '--index: 4;',
 			d: 'M15 8A7 7 0 1 1 1 8a7 7 0 0 1 14 0ZM9 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM6.75 8a.75.75 0 0 0 0 1.5h.75v1.75a.75.75 0 0 0 1.5 0v-2.5A.75.75 0 0 0 8.25 8h-1.5Z'
 		}
 	];
@@ -93,33 +90,6 @@
 					{/if}
 				{/each}
 			</div>
-			<div>
-				{#each pages2 as a}
-					{#if a.path === $page.url.pathname}
-						<a on:click={closeDialog} class="active" href={a.path} style={a.style}
-							><svg
-								xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 16 16"
-								fill="currentColor"
-								class="w-4 h-4"
-							>
-								<path fill-rule="evenodd" d={a.d} /></svg
-							>{a.name}</a
-						>
-					{:else}
-						<a on:click={closeDialog} class="passive" href={a.path} style={a.style}
-							><svg
-								xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 16 16"
-								fill="currentColor"
-								class="w-4 h-4"
-							>
-								<path fill-rule="evenodd" d={a.d} /></svg
-							>{a.name}</a
-						>
-					{/if}
-				{/each}
-			</div>
 		</nav>
 		<form method="dialog">
 			<button on:click={closeDialog} class="close"
@@ -134,28 +104,30 @@
 	.wrap {
 		position: fixed;
 		inset: auto 0 0px;
-		margin: auto auto 8px;
+		margin: auto auto 16px;
 		height: 60px;
 		max-width: 984px;
 	}
 	button.open,
 	button.close {
 		position: absolute;
-		inset: auto 16px 0 auto;
 		z-index: 1;
 		width: 60px;
 		height: 60px;
 		border-radius: 50%;
 		color: white;
-		font-family: inherit;
 		font-size: small;
 	}
 	button.open {
+		inset: auto 16px 0 auto;
 		background: rgba(0, 0, 0, 0.2);
 		backdrop-filter: blur(2px);
 	}
 	button.close {
+		inset: 0;
+		margin: auto;
 		background: #29323c;
+		animation: in 0.5s ease;
 	}
 	button.close span {
 		position: absolute;
@@ -177,7 +149,7 @@
 	dialog {
 		position: fixed;
 		inset: 0;
-		margin: auto auto 8px;
+		margin: auto;
 		height: 100%;
 		width: 100%;
 		max-width: 984px;
@@ -211,11 +183,33 @@
 			opacity: 0;
 		}
 	}
-	.menu div:nth-of-type(1) a,
-	.menu div:nth-of-type(2) a {
+	@keyframes in {
+		from {
+			opacity: 0;
+			transform: translate(100%, 100%);
+		}
+		to {
+			opacity: 1;
+			transform: translate(0%, 0%);
+		}
+	}
+	@keyframes circle {
+		from {
+			opacity: 0;
+			translate: none;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+	.menu div a {
 		position: absolute;
-		inset: auto 8px 8px auto;
+		inset: 0;
 		margin: auto;
+		--angle: calc(270deg + calc(290deg / 4 * var(--index)));
+		--x: calc(cos(var(--angle)) * 80px);
+		--y: calc(sin(var(--angle)) * 80px);
+		translate: calc(var(--x) - 0%) calc(var(--y) - 0%);
 		text-align: center;
 		font-size: xx-small;
 		color: white;
@@ -225,19 +219,7 @@
 		display: grid;
 		place-content: center;
 		cursor: pointer;
-		transition: all 0.5s;
-	}
-	.menu div:nth-of-type(1) a {
-		--angle: calc(190deg + calc(70deg / 2 * var(--index)));
-		--x: calc(cos(var(--angle)) * 120px);
-		--y: calc(sin(var(--angle)) * 120px);
-		translate: calc(var(--x) - 50%) calc(var(--y) - 50%);
-	}
-	.menu div:nth-of-type(2) a {
-		--angle: calc(190deg + calc(70deg / 1 * var(--index)));
-		--x: calc(cos(var(--angle)) * 60px);
-		--y: calc(sin(var(--angle)) * 60px);
-		translate: calc(var(--x) - 25%) calc(var(--y) - 25%);
+		animation: circle 1s ease-in;
 	}
 	.menu a:hover {
 		background-color: #96aadc;
