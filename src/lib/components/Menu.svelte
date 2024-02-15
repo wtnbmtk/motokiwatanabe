@@ -55,7 +55,11 @@
 
 {#if y > 48}
 	<div class="wrap">
-		<button on:click={openDialog} transition:fade class="open">MENU</button>
+		<button on:click={openDialog} transition:fade class="open">
+			<span />
+			<span />
+			<span /></button
+		>
 	</div>
 {/if}
 <svelte:window bind:scrollY={y} />
@@ -116,12 +120,31 @@
 		height: 60px;
 		border-radius: 50%;
 		color: white;
-		font-size: small;
 	}
 	button.open {
 		inset: auto 16px 0 auto;
+		font-size: 0.8rem;
 		background: rgba(0, 0, 0, 0.2);
 		backdrop-filter: blur(2px);
+		transition: all 0.5s ease;
+	}
+	button.open span {
+		position: absolute;
+		display: block;
+		height: 2px;
+		width: 30px;
+		margin: auto;
+		background: white;
+		transition: all 0.5s ease;
+	}
+	button.open span:first-child {
+		inset: 18px 0 auto;
+	}
+	button.open span:nth-child(2) {
+		inset: 0;
+	}
+	button.open span:last-child {
+		inset: auto 0 18px;
 	}
 	button.close {
 		inset: 0;
@@ -135,6 +158,7 @@
 		height: 2px;
 		width: 30px;
 		background: #fff;
+		transition: all 0.5s;
 	}
 	button.close span:first-child {
 		inset: 0;
@@ -186,11 +210,11 @@
 	@keyframes in {
 		from {
 			opacity: 0;
-			transform: translate(100%, 100%);
+			transform: translateY(200%);
 		}
 		to {
 			opacity: 1;
-			transform: translate(0%, 0%);
+			transform: translateY(0%);
 		}
 	}
 	@keyframes circle {
@@ -207,22 +231,19 @@
 		inset: 0;
 		margin: auto;
 		--angle: calc(270deg + calc(290deg / 4 * var(--index)));
-		--x: calc(cos(var(--angle)) * 80px);
-		--y: calc(sin(var(--angle)) * 80px);
+		--x: calc(cos(var(--angle)) * 100px);
+		--y: calc(sin(var(--angle)) * 100px);
 		translate: calc(var(--x) - 0%) calc(var(--y) - 0%);
 		text-align: center;
-		font-size: xx-small;
+		font-size: small;
 		color: white;
-		width: 60px;
-		height: 60px;
+		width: 80px;
+		height: 80px;
 		border-radius: 50%;
 		display: grid;
 		place-content: center;
 		cursor: pointer;
 		animation: circle 1s ease-in;
-	}
-	.menu a:hover {
-		background-color: #96aadc;
 	}
 	svg {
 		width: 1rem;
@@ -234,5 +255,18 @@
 	}
 	.passive {
 		background: #29323c;
+	}
+	@media (hover: hover) {
+		button.open:hover span {
+			transform: scaleX(1.2);
+			transition: all 0.5s ease;
+		}
+		button.close:hover span {
+			rotate: 90deg;
+			transition: all 0.3s ease;
+		}
+		.menu a:hover {
+			background-color: #96aadc;
+		}
 	}
 </style>

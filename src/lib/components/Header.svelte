@@ -2,6 +2,7 @@
 	import { fade } from 'svelte/transition';
 	import Logo from '$lib/components/Logo.svelte';
 	import Nav from '$lib/components/Nav.svelte';
+	import Dialog from '$lib/components/Dialog.svelte';
 
 	let y = 0;
 </script>
@@ -10,6 +11,7 @@
 	<div>
 		<a href="/"><Logo /></a>
 		<Nav />
+		<Dialog />
 	</div>
 </header>
 {#if y > 48}
@@ -17,6 +19,7 @@
 		<div>
 			<a href="/"><Logo /></a>
 			<Nav />
+			<Dialog />
 		</div>
 	</header>
 {/if}
@@ -66,5 +69,9 @@
 		padding: 8px 0;
 		height: 40px;
 		width: auto;
+	}
+	header > div > :global(button) {
+		position: absolute;
+		inset: 0 16px 0 auto;
 	}
 </style>
