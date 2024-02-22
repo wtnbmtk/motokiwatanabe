@@ -3,7 +3,6 @@
 	import work_1 from '$lib/assets/work-1.png';
 	import work_2 from '$lib/assets/work-2.png';
 	import work_3 from '$lib/assets/work-3.png';
-	import work_4 from '$lib/assets/work-4.png';
 	import profile from '$lib/assets/profile.png';
 </script>
 
