@@ -16,7 +16,6 @@
 <style>
 	/* FOOTER*/
 	footer {
-		container: footer / inline-size;
 	}
 	nav {
 		padding: 0;
@@ -25,6 +24,7 @@
 	}
 	ul {
 		padding: 0;
+		list-style: none;
 	}
 	a {
 		position: relative;
@@ -81,10 +81,7 @@
 		text-align: center;
 		margin-bottom: 8px;
 	}
-	@container footer (min-width: 400px) {
-		.contain {
-			max-width: 400px;
-		}
+	@media (width >= 600px) {
 		li {
 			display: inline-block;
 		}
@@ -93,11 +90,6 @@
 		}
 		li:last-child {
 			margin-right: 0;
-		}
-	}
-	@container footer (min-width: 800px) {
-		.contain {
-			max-width: 800px;
 		}
 	}
 </style>

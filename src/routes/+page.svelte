@@ -1,78 +1,53 @@
 <script lang="ts">
+	import type { PageData } from './$types';
+	export let data: PageData;
 	import Logo from '$lib/components/Logo.svelte';
-	import work_1 from '$lib/assets/work-1.png';
-	import work_2 from '$lib/assets/work-2.png';
-	import work_3 from '$lib/assets/work-3.png';
 	import profile from '$lib/assets/profile.png';
 </script>
 
-<main id="top">
-	<section class="cover">
-		<div class="wrap">
-			<hgroup>
-				<h1>My<br />Portfolio</h1>
-			</hgroup>
-		</div>
-	</section>
-	<section>
-		<div class="inner">
-			<h2>About</h2>
-			<div class="about">
-				<div>
-					<img src={profile} alt="" />
-					<Logo />
-				</div>
-				<p>
-					東京工芸大学卒。同大学在学中からプログラミングスキル、デザインスキルを身に着けてきました。プログラミングは特にWebのフロントエンド領域を得意としていて、コーディングによる様々なデザイン手法に関心があります。その為、フロントエンドのライブラリやフレームワークの扱いには幅広い経験があります。バックエンドにも注力していて、ブログサイトの開発を通じてデータのやり取りの手法について学んでいます。Webプログラミング以外ではVBAを用いた業務効率化ツールの開発や、Pythonを用いたOCRツールの開発経験があります。
-				</p>
+<section class="cover">
+	<div class="wrap">
+		<hgroup>
+			<h1>My<br />Portfolio</h1>
+		</hgroup>
+	</div>
+</section>
+<section>
+	<div class="inner">
+		<h2>About</h2>
+		<div class="about">
+			<div>
+				<img src={profile} alt="" />
+				<Logo />
 			</div>
+			<p>
+				東京工芸大学卒。同大学在学中からプログラミングスキル、デザインスキルを身に着けてきました。プログラミングは特にWebのフロントエンド領域を得意としていて、コーディングによる様々なデザイン手法に関心があります。その為、フロントエンドのライブラリやフレームワークの扱いに幅広い経験があります。バックエンドにも注力していて、ブログサイトの開発を通じてデータのやり取りの手法について学んでいます。Webプログラミング以外ではVBAを用いた業務効率化ツールの開発や、Pythonを用いたOCRツールの開発経験があります。
+			</p>
 		</div>
-	</section>
-	<section>
-		<div class="inner">
-			<h2>Works</h2>
-			<p>Webサイト</p>
-			<ul class="work">
+	</div>
+</section>
+<section>
+	<div class="inner">
+		<h2>Works</h2>
+		<p>Webサイト</p>
+		<ul class="work">
+			{#each data.articles as article (article._id)}
 				<li>
-					ブログサイト (React/Next.js)
-					<a href="https://gamers-world.pages.dev/" target="_blank">
-						<img src={work_1} alt="" />
-						<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+					{article.title}
+					<a href={`works/${article.slug}`}
+						><img src={article.coverImage.src} alt="" /><svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="1em"
+							height="1em"
+							viewBox="0 0 24 24"
 							><path fill="currentColor" d="M5 17.59L15.59 7H9V5h10v10h-2V8.41L6.41 19z" /></svg
 						></a
 					>
 				</li>
-				<li>
-					ブログサイト (Vue/Nuxt.js)
-					<a href="https://gamers-world.pages.dev/" target="_blank">
-						<img src={work_2} alt="" />
-						<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
-							><path fill="currentColor" d="M5 17.59L15.59 7H9V5h10v10h-2V8.41L6.41 19z" /></svg
-						></a
-					>
-				</li>
-				<li>
-					ECサイト (Svelte)
-					<a href="https://gamers-world.pages.dev/" target="_blank">
-						<img src={work_3} alt="" />
-						<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
-							><path fill="currentColor" d="M5 17.59L15.59 7H9V5h10v10h-2V8.41L6.41 19z" /></svg
-						></a
-					>
-				</li>
-				<li>
-					SPA (Astro)
-					<a href="https://gamers-world.pages.dev/" target="_blank">
-						<img src={work_3} alt="" />
-						<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
-							><path fill="currentColor" d="M5 17.59L15.59 7H9V5h10v10h-2V8.41L6.41 19z" /></svg
-						></a
-					>
-				</li>
-			</ul>
-		</div>
-	</section>
-</main>
+			{/each}
+		</ul>
+	</div>
+</section>
 
 <style>
 	.cover {
@@ -168,6 +143,7 @@
 		overflow: hidden;
 		margin: 8px auto 0;
 		color: white;
+		box-shadow: 2px 2px 4px 0px #ccc;
 	}
 	.work a::before {
 		content: '';
