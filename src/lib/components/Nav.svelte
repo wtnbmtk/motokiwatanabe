@@ -50,9 +50,13 @@
 		border-bottom: solid 2px;
 		top: -6px;
 	}
-	.mail svg {
+	.mail {
+		width: 30px;
 		position: relative;
-		inset: 2px 0;
+	}
+	.mail svg {
+		position: absolute;
+		inset: 0;
 		margin: auto;
 	}
 

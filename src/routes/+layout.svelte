@@ -4,6 +4,7 @@
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import Menu from '$lib/components/Menu.svelte';
+	import Dialog from '$lib/components/Dialog.svelte';
 </script>
 
 <Header />

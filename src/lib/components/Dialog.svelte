@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { fade } from 'svelte/transition';
+	import { createEventDispatcher } from 'svelte';
 
 	const pages = [
 		{
@@ -17,7 +18,7 @@
 		},
 		{
 			name: 'ARTICLE',
-			path: '/ariticle',
+			path: '/article',
 			style: '--index: 2;',
 			d: 'M7.25 3.688a8.035 8.035 0 0 0-4.872-.523A.48.48 0 0 0 2 3.64v7.994c0 .345.342.588.679.512a6.02 6.02 0 0 1 4.571.81V3.688ZM8.75 12.956a6.02 6.02 0 0 1 4.571-.81c.337.075.679-.167.679-.512V3.64a.48.48 0 0 0-.378-.475 8.034 8.034 0 0 0-4.872.523v9.268Z'
 		},
@@ -35,32 +36,20 @@
 		}
 	];
 
-	let dialog: HTMLDialogElement;
-
-	const openDialog = () => {
-		dialog.showModal();
-		dialog.addEventListener('click', (event) => {
-			if (event.target === dialog) {
-				dialog.close();
-			}
-		});
-	};
-
-	const closeDialog = () => {
-		dialog.close();
-	};
-
-	let y = 0;
+	export let dialog: HTMLDialogElement;
+	const dispatch = createEventDispatcher();
+	function clickClose() {
+		dispatch('closeDialog');
+	}
 </script>
 
-<button on:click={openDialog} class="open">MENU</button>
 <dialog bind:this={dialog}>
 	<div class="inner">
 		<h2>MENU</h2>
 		<nav>
 			{#each pages as a}
 				{#if a.path === $page.url.pathname}
-					<a on:click={closeDialog} class="active" href={a.path} style={a.style}
+					<a on:click={clickClose} class="active" href={a.path} style={a.style}
 						><svg
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 16 16"
@@ -71,7 +60,7 @@
 						>{a.name}</a
 					>
 				{:else}
-					<a on:click={closeDialog} class="passive" href={a.path} style={a.style}
+					<a on:click={clickClose} class="passive" href={a.path} style={a.style}
 						><svg
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 16 16"
@@ -83,17 +72,9 @@
 					>
 				{/if}
 			{/each}
-			<a class="mail" href="mailto:wtnbmtk7@gmail.com"
-				><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
-					><path
-						fill="currentColor"
-						d="m20 8l-8 5l-8-5V6l8 5l8-5m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2"
-					/></svg
-				></a
-			>
 		</nav>
 		<form method="dialog">
-			<button on:click={closeDialog} class="close"
+			<button on:click={clickClose} class="close"
 				><span />
 				<span /></button
 			>
@@ -102,16 +83,13 @@
 </dialog>
 
 <style>
-	button.open,
 	button.close {
+		position: relative;
 		margin: auto;
 		font-size: small;
 		color: white;
 		height: 40px;
 		width: 40px;
-	}
-	button.close {
-		position: relative;
 	}
 	button.close span {
 		position: absolute;
@@ -190,13 +168,17 @@
 		gap: 1rem;
 	}
 	a {
-		display: block;
+		display: grid;
+		grid-auto-flow: column;
+		grid-template-columns: auto 1fr;
 		color: white;
 		text-decoration: none;
 		text-align: center;
-		padding: 0 2rem;
+		padding: 0 8px;
 		cursor: pointer;
 		transition: all 0.5s;
+		font-size: 1rem;
+		place-self: baseline;
 	}
 	a:hover {
 		background: #96aadc;
@@ -211,19 +193,13 @@
 	.passive svg {
 		width: 1rem;
 		height: 1rem;
-		margin-right: 8px;
-	}
-	.mail svg {
-		position: relative;
-		inset: 2px 0;
-		margin: auto;
+		margin: auto 8px auto 0;
 	}
 	form {
 		margin: 1rem 0 0;
 	}
 	@media (width >= 600px) {
-		dialog,
-		button.open {
+		dialog {
 			display: none;
 		}
 	}

@@ -5,13 +5,27 @@
 	import Dialog from '$lib/components/Dialog.svelte';
 
 	let y = 0;
+	let dialog: HTMLDialogElement;
+
+	const openDialog = () => {
+		dialog.showModal();
+		dialog.addEventListener('click', (event) => {
+			if (event.target === dialog) {
+				dialog.close();
+			}
+		});
+	};
+
+	const closeDialog = () => {
+		dialog.close();
+	};
 </script>
 
 <header>
 	<div>
 		<a href="/"><Logo /></a>
 		<Nav />
-		<Dialog />
+		<button on:click={openDialog} class="open">MENU</button>
 	</div>
 </header>
 {#if y > 48}
@@ -19,11 +33,12 @@
 		<div>
 			<a href="/"><Logo /></a>
 			<Nav />
-			<Dialog />
+			<button on:click={openDialog} class="open">MENU</button>
 		</div>
 	</header>
 {/if}
 <svelte:window bind:scrollY={y} />
+<Dialog bind:dialog on:closeDialog={closeDialog} />
 
 <style>
 	header,
@@ -33,8 +48,9 @@
 		transition: 0.5s;
 	}
 	header {
-		position: relative;
+		position: absolute;
 		top: 0;
+		z-index: 1;
 	}
 	header.fixed {
 		position: fixed;
@@ -65,13 +81,24 @@
 		width: fit-content;
 	}
 	header > div > a :global(svg) {
+		fill: #fff;
 		margin: 0;
 		padding: 8px 0;
 		height: 40px;
 		width: auto;
 	}
-	header > div > :global(button) {
+	button {
 		position: absolute;
 		inset: 0 16px 0 auto;
+		margin: auto;
+		font-size: small;
+		color: white;
+		height: 40px;
+		width: 40px;
+	}
+	@media (width >= 600px) {
+		button.open {
+			display: none;
+		}
 	}
 </style>

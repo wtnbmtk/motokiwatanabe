@@ -6,14 +6,11 @@
 					<li class="link1">
 						<a href="https://github.com/wtnbmtk">Github</a>
 					</li>
-					<li class="link2">
-						<a href="https://www.wantedly.com/id/wtnbmtk">Wantedly</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
 	</section>
-	<small class="copyright">© 2023 Motoki Watanabe</small>
+	<small class="copyright">© 2024 Motoki Watanabe</small>
 </footer>
 
 <style>
@@ -21,69 +18,63 @@
 	footer {
 		container: footer / inline-size;
 	}
-	#under-nav {
+	nav {
 		padding: 0;
 		width: fit-content;
 		margin: auto;
 	}
-	#under-nav li {
-		display: inline-block;
-		width: 110px;
-		text-align: center;
+	ul {
+		padding: 0;
 	}
-	footer #under-nav a {
+	a {
 		position: relative;
 		display: block;
-		color: black;
+		width: 100px;
+		color: #333;
 		text-decoration: none;
-		outline: none;
-		overflow: hidden;
+		text-align: center;
 		transition: all 0.5s;
 		height: 50px;
 		line-height: 50px;
 	}
-	footer #under-nav a::before,
-	footer #under-nav a::after {
+	a::before,
+	a::after {
 		position: absolute;
-		display: block;
 		content: '';
+		display: block;
 		width: 100%;
 		height: 100%;
 		transition: all 0.5s;
+		z-index: -1;
 	}
-	footer #under-nav a::before {
+	a::before {
 		top: 0;
 		left: 0;
-		border-top: 2px solid black;
-		border-left: 2px solid black;
+		border-top: 2px solid #333;
+		border-left: 2px solid #333;
 	}
-	footer #under-nav a::after {
+	a::after {
 		right: 0;
 		bottom: 0;
-		border-right: 2px solid black;
-		border-bottom: 2px solid black;
+		border-right: 2px solid #333;
+		border-bottom: 2px solid #333;
 	}
-	footer #under-nav .link1 a:hover {
-		background-color: #000;
+	a:hover {
+		background-color: #333;
 		color: white;
 		transition: all 0.7s;
 	}
-	footer #under-nav .link2 a:hover {
-		background-color: #21bddb;
-		color: white;
-		transition: all 0.7s;
-	}
-	footer #under-nav .link3 a:hover {
-		background-color: #7215ec;
-		color: white;
-		transition: all 0.7s;
-	}
-	footer #under-nav a:hover::before,
-	footer #under-nav a:hover::after {
+	a:hover::before,
+	a:hover::after {
 		width: 0;
 		height: 0;
 		opacity: 0;
-		transition: all 0.7s;
+		transition: all 0.5s;
+	}
+	a {
+		display: block;
+		color: #333;
+		cursor: pointer;
 	}
 	.copyright {
 		display: block;
@@ -94,13 +85,13 @@
 		.contain {
 			max-width: 400px;
 		}
-		#under-nav li {
+		li {
 			display: inline-block;
 		}
-		#under-nav li:first-child {
+		li:first-child {
 			margin-left: 0;
 		}
-		#under-nav li:last-child {
+		li:last-child {
 			margin-right: 0;
 		}
 	}
