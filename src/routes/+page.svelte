@@ -134,6 +134,7 @@
 		gap: 0;
 		max-width: 250px;
 		place-items: end center;
+		margin: auto;
 	}
 	.work a {
 		display: block;
