@@ -49,18 +49,13 @@
 	const closeDialog = () => {
 		dialog.close();
 	};
-
-	let y = 0;
 </script>
 
-{#if y > 48}
-	<button on:click={openDialog} transition:fade class="open">
-		<span />
-		<span />
-		<span /></button
-	>
-{/if}
-<svelte:window bind:scrollY={y} />
+<button on:click={openDialog} transition:fade class="open">
+	<span />
+	<span />
+	<span /></button
+>
 
 <dialog bind:this={dialog}>
 	<div class="inner">
