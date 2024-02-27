@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Logo from '$lib/components/Logo.svelte';
-	import profile from '$lib/assets/profile.png';
+	import profile from '$lib/assets/profile.jpg';
 </script>
 
 <section>
