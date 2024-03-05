@@ -120,6 +120,7 @@
 	.work {
 		display: grid;
 		place-content: center;
+		place-items: end center;
 		grid-template-columns: repeat(auto-fit, minmax(250px, auto));
 		gap: 16px;
 		list-style: none;
@@ -128,13 +129,7 @@
 		margin: 0 auto 8px;
 	}
 	.work li {
-		display: grid;
-		grid-template-rows: subgrid;
-		grid-row: span 2;
-		gap: 0;
 		max-width: 250px;
-		place-items: end center;
-		margin: auto;
 	}
 	.work a {
 		display: block;
@@ -143,16 +138,10 @@
 		position: relative;
 		overflow: hidden;
 		margin: 8px auto 0;
-		color: white;
-		box-shadow: 2px 2px 4px 0px #ccc;
-	}
-	.work a::before {
-		content: '';
-		display: block;
 	}
 	.work img {
-		width: 250px;
-		height: 250px;
+		min-width: 250px;
+		min-height: 250px;
 		object-fit: cover;
 		transition: 0.5s ease-in-out;
 		transform: scale(1);
