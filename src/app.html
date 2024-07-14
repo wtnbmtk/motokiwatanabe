@@ -1,52 +1,13 @@
 <!DOCTYPE html>
 <html lang="ja">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		<title>Motoki Watanabe's Portfolio</title>
-		<meta name="description" content="Motoki Watanabe's Portfolio" />
-		%sveltekit.head%
-	</head>
-	<body data-sveltekit-preload-data="hover">
-		<div class="contents">%sveltekit.body%</div>
-
-		<script type="text/javascript" src="js/patch.js" async></script>
-
-		<script type="text/javascript">
-			function showError(errId, errMsg) {
-				// handle critical errors here if needed
-			}
-
-			function patchInitialized(patch) {
-				// You can now access the patch object (patch), register variable watchers and so on
-			}
-
-			function patchFinishedLoading(patch) {
-				// The patch is ready now, all assets have been loaded
-			}
-
-			document.addEventListener('CABLES.jsLoaded', function (event) {
-				CABLES.patch = new CABLES.Patch({
-					patch: CABLES.exportedPatch,
-					prefixAssetPath: '',
-					assetPath: 'assets/',
-					jsPath: 'js/',
-					glCanvasId: 'glcanvas',
-					onError: showError,
-					onPatchLoaded: patchInitialized,
-					onFinishedLoading: patchFinishedLoading,
-					canvas: { alpha: true, premultipliedAlpha: true } // make canvas transparent
-				});
-			});
-
-			// disable rubberband effect on mobile devices
-			document.getElementById('glcanvas').addEventListener(
-				'touchmove',
-				(e) => {
-					e.preventDefault();
-				},
-				false
-			);
-		</script>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Motoki Watanabe's Blog</title>
+    <meta name="description" content="Motoki Watanabe's Blog" />
+    %sveltekit.head%
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div class="contents">%sveltekit.body%</div>
+  </body>
 </html>

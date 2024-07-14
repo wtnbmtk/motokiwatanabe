@@ -31,10 +31,12 @@ html:has(dialog[open]) {
   overflow: hidden;
 }
 body {
-  font: 1em "ZenOldMincho-Regular", serif;
-  margin: 0;
   background: black;
   color: white;
+  font: 1em "ZenOldMincho-Regular", serif;
+  margin: 0;
+  /* font: 1.2em "Voto Serif GX", serif;
+  	font-variation-settings: "wght" 100, "wdth" 80, "opsz" 50; */
 }
 h1,
 h2,
@@ -45,6 +47,14 @@ h6 {
   font-weight: unset;
   margin: 2rem 0 1rem;
 }
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+h6:first-child {
+  margin: 0 0 1rem;
+}
 h1 {
   font-size: 1.8rem;
   text-align: center;
@@ -53,21 +63,6 @@ h1 {
 }
 h2 {
   font-size: 1.4rem;
-  margin: 0;
-}
-.h2 {
-  display: flex;
-  align-items: center;
-  position: relative;
-  margin: 0 auto 1rem;
-}
-.h2 h2 {
-  padding: 0 8px 4px 0;
-  white-space: nowrap;
-}
-.h2 span {
-  height: 1px;
-  width: 100%;
 }
 p {
   margin: revert;
@@ -84,35 +79,19 @@ ol {
 }
 button {
   display: block;
+  background: none;
   border: none;
   cursor: pointer;
   font-family: inherit;
   font-size: inherit;
+  color: #fff;
 }
 img,
 picture,
 svg {
-  display: block;
+  display: inherit;
   max-width: 100%;
   object-fit: contain;
-}
-.icons {
-  height: 1cap;
-  width: 1cap;
-  font-size: 1.8rem;
-  vertical-align: sub;
-  display: inline-block;
-}
-.eyecatch {
-  object-fit: cover;
-}
-input,
-textarea {
-  display: block;
-  max-width: 100%;
-}
-input {
-  line-height: 1.2rem;
 }
 
 /* MAIN */
@@ -129,40 +108,4 @@ main {
 .contain > .inner {
   max-width: 782px;
   margin: auto;
-}
-dl {
-  display: grid;
-  grid-template-columns: 120px auto;
-  border-top: solid 2px #ccc;
-  border-right: solid 2px #ccc;
-  border-left: solid 2px #ccc;
-  color: #000;
-}
-dl dt {
-  border-bottom: solid 2px #ccc;
-  display: grid;
-  place-content: center;
-  padding: 8px;
-  background: #eee;
-}
-dl dd {
-  border-bottom: solid 2px #ccc;
-  border-left: solid 2px #ccc;
-  display: grid;
-  place-content: center start;
-  padding: 8px;
-  background: #fff;
-  margin: 0;
-}
-
-dl span {
-  font-size: x-small;
-  vertical-align: top;
-}
-dl ul {
-  padding-left: 1.5rem;
-}
-.prices {
-  text-decoration: underline;
-  color: blue;
 }

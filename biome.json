@@ -1,0 +1,32 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.7.3/schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "all": true,
+      "style": {
+        "noDefaultExport": "off",
+        "useConst": "off",
+        "useTemplate": "off",
+        "noInferrableTypes": "off"
+      },
+      "suspicious": {
+        "noImplicitAnyLet": "off",
+        "noConsoleLog": "off",
+        "noAssignInExpressions": "off",
+        "useAwait": "off"
+      },
+      "correctness": {
+        "noUnusedImports": "off",
+        "noUnusedVariables": "off",
+        "noUndeclaredVariables": "off"
+      },
+      "complexity": {
+        "noForEach": "off"
+      }
+    }
+  }
+}
