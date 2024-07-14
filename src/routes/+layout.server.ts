@@ -1,4 +1,4 @@
-export const prerender = true;
+export const prerender = "auto";
 
 import { NEWT_APP_UID, NEWT_CATEGORY_MODEL_UID } from "$env/static/private";
 import { newtClient } from "$lib/server/newt";
