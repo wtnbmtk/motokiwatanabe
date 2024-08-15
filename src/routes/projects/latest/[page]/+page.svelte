@@ -23,7 +23,7 @@
 <div class="contain">
   <h1>Latest</h1>
   <div class="inner">
-    <Dropdown categories={data.categories} name={"Latest"} />
+    <Dropdown tags={data.tags} name={"Latest"} />
 
     <SearchForm {query} on:search={handleSearch} />
 

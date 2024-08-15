@@ -30,13 +30,73 @@
       </nav>
     </div>
   </div>
-</div>
-<div class="contain">
-  <div class="inner">
-    <div class="h2">
-      <h2>ポートフォリオ</h2>
-      <span />
+  <div class="h2">
+    <h2>スキル</h2>
+    <span />
+    <div class="circle" />
+  </div>
+  <div class="inner skills">
+    <div>
+      <p>Languages</p>
+      <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>TypeScript</li>
+        <li>GraphQL</li>
+        <li>Python</li>
+        <li>VBA</li>
+      </ul>
     </div>
+    <div>
+      <p>Frameworks & Libraries</p>
+      <ul>
+        <li>React</li>
+        <li>Next.js</li>
+        <li>Vue.js</li>
+        <li>Nuxt.js</li>
+        <li>Svelte</li>
+        <li>Astro</li>
+        <li>Gatsby</li>
+      </ul>
+    </div>
+    <div>
+      <p>Development Tools</p>
+      <ul>
+        <li>VSCode</li>
+        <li>Git</li>
+        <li>Jupyter Notebook</li>
+        <li>Figma</li>
+      </ul>
+    </div>
+  </div>
+  <div class="h2">
+    <h2>実績</h2>
+    <span />
+  </div>
+  <div class="inner exprerience">
+    <div class="progress">
+      <p>past</p>
+      <p>now</p>
+    </div>
+    <ul class="work">
+      <li>研究室でWebヒューマンインタフェースを研究する</li>
+      <li>独学でWordPressサイトを構築してブログサイトの運用を行う</li>
+      <li>知人が立ち上げたウェブマガジンの実装をおこなう</li>
+      <li>身内が運営する賃貸物件の紹介サイトを制作</li>
+      <li>EC機能を付与したWebサイト制作サービスを立ち上げる</li>
+      <li>自身のホームページを立ち上げる</li>
+      <li>News APIを用いたニュースデータ収集サイトを制作</li>
+      <li>
+        JSONBin.ioを用いたデータの取得、編集が可能なWebアプリケーションを制作
+      </li>
+    </ul>
+  </div>
+  <div class="h2">
+    <h2>ポートフォリオ</h2>
+    <span />
+  </div>
+  <div class="inner">
     <ArticleCard articles={data.articles} />
   </div>
 </div>
@@ -121,48 +181,138 @@
     margin: auto;
     border-radius: 50%;
   }
-  .cover {
-    position: relative;
-    margin: 0 auto 8px;
-    padding: 0;
-    max-width: revert;
-    height: 400px;
-  }
-  .wrap {
-    height: 352px;
-    position: relative;
-    inset: 48px 0 0;
-    display: grid;
-  }
-
-  .quote {
-    font-weight: unset;
-    margin: auto;
-    font-size: clamp(1rem, 8vw, 1rem);
-    text-align: revert;
-  }
-  .quote span {
-    color: #b81220;
-  }
   .inner {
     margin: 1rem auto 0;
   }
-  .all {
-    display: flex;
-    place-items: center;
-    gap: 4px;
-    justify-content: center;
+  .skills {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    gap: 4rem;
+  }
+  .skills > div {
+    position: relative;
+    width: 100%;
+    max-width: 250px;
+    height: fit-content;
+    margin: auto;
+    border-radius: 8px;
+  }
+  .skills > div p {
+    position: absolute;
+    width: fit-content;
+    margin: auto;
+    display: block;
+    border-radius: 15px;
+    text-align: center;
+    inset: -12px 0 auto;
+    padding: 0 16px 3px;
+    font-size: 0.8rem;
+  }
+  .skills > div ul {
+    margin: 15px auto 0;
+    list-style: none;
+    padding: 8px;
+    width: fit-content;
+  }
+  .circle {
+    position: absolute;
+    right: 30px;
+    top: 60px;
+  }
+  .circle::before,
+  .circle::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transform: translatey(0px);
+    animation: float 6s ease-in-out infinite;
+  }
+  .circle::before {
+    top: 0px;
+    background: rgb(159 51 123 / 80%);
+    filter: blur(2px);
+    z-index: 1;
+    animation-duration: 4s;
+  }
+  .circle::after {
+    top: 15px;
+    background: #b81220;
+    animation-duration: 5s;
+  }
+  @keyframes float {
+    0% {
+      transform: translateY(0%);
+    }
+    50% {
+      transform: translateY(50%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+  .exprerience {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px;
     width: fit-content;
     margin: auto;
   }
-  .all svg {
-    stroke-width: 1.5;
-    width: 20px;
-    height: 20px;
-    vertical-align: sub;
+  .progress {
+    display: grid;
+    background: linear-gradient(0deg, white, black);
+    border-radius: 17px;
+    width: fit-content;
+    padding: 6px 6px 6px 0;
+    font-size: 1rem;
+  }
+  .progress p {
+    position: relative;
+    writing-mode: vertical-rl;
+    text-orientation: sideways-left;
+    transform: scale(-1, -1);
+    margin: 0;
+  }
+  .progress p:nth-child(1) {
+    position: absolute;
+    color: white;
+  }
+  .progress p:nth-child(2) {
+    color: black;
+  }
+  .exprerience ul {
+    list-style: none;
+    padding: 0;
+  }
+  .exprerience ul li {
+    position: relative;
+    padding-left: 32px;
+    margin: 1rem 0;
+  }
+  .exprerience ul li:before {
+    position: absolute;
+    inset: 0 auto 0 0;
+    margin: auto;
+    content: "";
+    display: block;
+    width: 16px;
+    height: 1px;
   }
   @media (width >= 600px) {
   }
   @media (width >= 800px) {
+    .introduction {
+      grid-template-columns: repeat(2, auto);
+    }
+    .skills {
+      grid-template-columns: repeat(3, auto);
+      gap: 0;
+    }
+    .skills > div {
+      width: 200px;
+      margin: 0 auto;
+    }
   }
 </style>

@@ -16,14 +16,14 @@
 </script>
 
 <svelte:head>
-  <title>Category: {data.category.name}</title>
-  <meta name="description" content="Category: {data.category.name}" />
+  <title>Category: {data.tag.name}</title>
+  <meta name="description" content="Category: {data.tag.name}" />
 </svelte:head>
 
 <div class="contain">
-  <h1>{data.category.name}</h1>
+  <h1>{data.tag.name}</h1>
   <div class="inner">
-    <Dropdown categories={data.categories} name={data.category.name} />
+    <Dropdown tags={data.tags} name={data.tag.name} />
 
     <SearchForm {query} on:search={handleSearch} />
 
@@ -31,7 +31,7 @@
 
     <Pagination
       current={data.current}
-      slug={data.category?.slug}
+      slug={data.tag?.slug}
       total={data.total}
       limit={data.limit}
       max={data.max}

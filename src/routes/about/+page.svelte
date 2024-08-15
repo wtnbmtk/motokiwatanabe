@@ -2,7 +2,7 @@
 </script>
 
 <div class="contain">
-  <h1>About</h1>
+  <h1>ABOUT</h1>
   <div class="h2">
     <h2>自己紹介</h2>
     <span />

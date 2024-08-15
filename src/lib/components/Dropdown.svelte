@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let categories;
+  export let tags;
   export let name;
 
   let menuOpen = false;
@@ -50,9 +50,9 @@
   </div>
   {#if menuOpen}
     <nav>
-      <a href={`/articles/latest/1`}>Latest</a>
-      {#each categories as { slug, name }}
-        <a href={`/articles/${slug}/1`}>{name}</a>
+      <a href={`/projects/latest/1`}>Latest</a>
+      {#each tags as { slug, name }}
+        <a href={`/projects/${slug}/1`}>{name}</a>
       {/each}
     </nav>{/if}
 </div>
