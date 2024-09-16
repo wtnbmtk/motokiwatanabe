@@ -22,9 +22,6 @@
           </svg>
           Github
         </a>
-        <a href="https://www.instagram.com/wtnbmtk" target="_blank"
-          ><svg class="icons"><use href="#instagram" /></svg>Instagram</a
-        >
       </nav>
     </div>
   </div>
@@ -106,9 +103,10 @@
     margin: 64px auto;
   }
   .enhanced {
-    width: 120px;
+    width: 60px;
     height: auto;
     margin: auto;
+    border-radius: 50%;
   }
   .introduction {
     display: grid;

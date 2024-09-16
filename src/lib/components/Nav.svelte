@@ -2,7 +2,7 @@
   import { page } from "$app/stores";
 
   const pages = [
-    { name: "Projects", path: "/projects/latest/1" },
+    { name: "Articles", path: "/articles/latest/1" },
     { name: "Contact", path: "/contact" },
     { name: "Infomation", path: "/information" },
   ];

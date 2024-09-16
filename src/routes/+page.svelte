@@ -24,9 +24,6 @@
           </svg>
           Github
         </a>
-        <a href="https://www.instagram.com/wtnbmtk" target="_blank"
-          ><svg class="icons"><use href="#instagram" /></svg>Instagram</a
-        >
       </nav>
     </div>
   </div>

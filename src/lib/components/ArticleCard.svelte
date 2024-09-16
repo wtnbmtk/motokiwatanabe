@@ -74,9 +74,9 @@
     position: absolute;
     inset: auto auto 0 0;
     margin: auto;
-    background: rgba(195, 223, 243, 0.8);
+    background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(2px);
     font-size: 1.6rem;
-    padding: 2px;
+    padding: 4px 4px 2px 2px;
   }
 </style>

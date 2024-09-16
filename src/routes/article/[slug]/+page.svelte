@@ -45,10 +45,10 @@
 </div>
 
 <style lang="scss">
-  section {
-    max-width: 516px;
-    margin: auto;
-  }
+  // section {
+  //   max-width: 516px;
+  //   margin: auto;
+  // }
   .article :global(h2) {
     font-weight: bold;
   }
@@ -61,5 +61,9 @@
   }
   :global(.pswp-gallery img) {
     cursor: zoom-in;
+  }
+  :global(hr) {
+    border: transparent;
+    padding: 8px;
   }
 </style>
