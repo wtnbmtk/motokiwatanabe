@@ -50,9 +50,9 @@
   </div>
   {#if menuOpen}
     <nav>
-      <a href={`/projects/latest/1`}>Latest</a>
+      <a href={`/articles/latest/1`}>Latest</a>
       {#each tags as { slug, name }}
-        <a href={`/projects/${slug}/1`}>{name}</a>
+        <a href={`/articles/${slug}/1`}>{name}</a>
       {/each}
     </nav>{/if}
 </div>

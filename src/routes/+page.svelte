@@ -18,6 +18,12 @@
         東京工芸大学卒。同大学在学中からプログラミングスキル、デザインスキルを身に着けてきました。プログラミングは特にWebのフロントエンド領域を得意としていて、コーディングによる様々なデザイン手法に関心があります。その為、フロントエンドのライブラリやフレームワークの扱いに幅広い経験があります。バックエンドにも注力していて、ブログサイトの開発を通じてデータのやり取りの手法について学んでいます。Webプログラミング以外ではVBAを用いた業務効率化ツールの開発や、Pythonを用いたOCRツールの開発経験があります。
       </p>
       <nav>
+        <a href="https://mtkwtnb.jp/" target="_blank"
+          ><svg class="icons" stroke-width="1.5" stroke="currentColor">
+            <use href="#blog" />
+          </svg>
+          Blog
+        </a>
         <a href="https://github.com/wtnbmtk" target="_blank"
           ><svg class="icons">
             <use href="#github" />
@@ -122,6 +128,12 @@
     d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
   />
 </symbol>
+<symbol id="blog" viewBox="0 0 24 24">
+  <path
+    fill="none"
+    d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+  />
+</symbol>
 
 <style>
   .introduction > div:nth-of-type(1) {
@@ -144,7 +156,21 @@
     padding: 0 4px;
     border-radius: 12px;
   }
-  nav a:nth-child(2)::before {
+  nav a:hover {
+    color: black;
+    transition: all 0.7s;
+    text-decoration: none;
+  }
+  nav a:nth-child(1):hover {
+    background: #d0021b;
+  }
+  nav a:nth-child(2):hover {
+    background: #1f883d;
+  }
+  nav a:nth-child(3):hover::before {
+    opacity: 1;
+  }
+  nav a:nth-child(3)::before {
     position: absolute;
     content: "";
     inset: 0; /* same as { top: 0; right: 0; bottom: 0; left: 0; } */
@@ -160,17 +186,6 @@
     opacity: 0;
     transition: all 0.7s;
     border-radius: 12px;
-  }
-  nav a:hover {
-    color: black;
-    transition: all 0.7s;
-    text-decoration: none;
-  }
-  nav a:nth-child(1):hover {
-    background: #1f883d;
-  }
-  nav a:nth-child(2):hover::before {
-    opacity: 1;
   }
   nav a:hover .icons {
     fill: black;
