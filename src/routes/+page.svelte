@@ -95,6 +95,11 @@
   </div>
   <div class="inner">
     <ArticleCard articles={data.articles} />
+    <a class="all" href="/articles/latest/1"
+      >Lead More <svg>
+        <use href="#arrow" />
+      </svg></a
+    >
   </div>
 </div>
 
@@ -296,6 +301,20 @@
     display: block;
     width: 16px;
     height: 1px;
+  }
+  .all {
+    display: flex;
+    place-items: center;
+    gap: 4px;
+    justify-content: center;
+    width: fit-content;
+    margin: 16px auto 0;
+  }
+  .all svg {
+    stroke-width: 1.5;
+    width: 20px;
+    height: 20px;
+    vertical-align: sub;
   }
   @media (width >= 600px) {
   }
