@@ -9,7 +9,7 @@
     <div>
       <enhanced:img class="enhanced" src="$lib/img/profile.jpg" alt="" />
       <div>
-        <p class="small">ソフトウェアエンジニア</p>
+        <p class="small">プログラマー</p>
         <p class="name">渡辺 元己</p>
       </div>
     </div>
