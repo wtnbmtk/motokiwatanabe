@@ -57,7 +57,7 @@
     margin: 32px 0 4px;
   }
   .eyecatch {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 1.91/1;
   }
   :global(.pswp-gallery img) {
     cursor: zoom-in;
