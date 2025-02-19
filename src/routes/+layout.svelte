@@ -14,7 +14,6 @@
 
 <main>
   {@render children?.()}
-  <Menu />
 </main>
 
 <Footer categories={data.categories} />
