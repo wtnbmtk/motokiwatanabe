@@ -1,27 +1,38 @@
 <script lang="ts">
-  export let showModal: boolean;
+  import { run, self, createBubbler, stopPropagation } from 'svelte/legacy';
 
-  let dialog: HTMLDialogElement; // HTMLDialogElement
-
-  $: if (dialog && showModal) {
-    dialog.showModal();
+  const bubble = createBubbler();
+  interface Props {
+    showModal: boolean;
+    header?: import('svelte').Snippet;
+    children?: import('svelte').Snippet;
   }
+
+  let { showModal = $bindable(), header, children }: Props = $props();
+
+  let dialog: HTMLDialogElement = $state(); // HTMLDialogElement
+
+  run(() => {
+    if (dialog && showModal) {
+      dialog.showModal();
+    }
+  });
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
+<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
 <dialog
   bind:this={dialog}
-  on:close={() => (showModal = false)}
-  on:click|self={() => dialog.close()}
+  onclose={() => (showModal = false)}
+  onclick={self(() => dialog.close())}
 >
-  <!-- svelte-ignore a11y-no-static-element-interactions -->
-  <div on:click|stopPropagation>
-    <slot name="header" />
+  <!-- svelte-ignore a11y_no_static_element_interactions -->
+  <div onclick={stopPropagation(bubble('click'))}>
+    {@render header?.()}
     <hr />
-    <slot />
+    {@render children?.()}
     <hr />
-    <!-- svelte-ignore a11y-autofocus -->
-    <button autofocus on:click={() => dialog.close()}>close modal</button>
+    <!-- svelte-ignore a11y_autofocus -->
+    <button autofocus onclick={() => dialog.close()}>close modal</button>
   </div>
 </dialog>
 

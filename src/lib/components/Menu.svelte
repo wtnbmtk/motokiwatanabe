@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { page } from "$app/stores";
+  import { page } from "$app/state";
   import { fade } from "svelte/transition";
 
   const pages = [
@@ -35,31 +35,37 @@
     },
   ];
 
-  let dialog: HTMLDialogElement;
+  let dialog = $state<HTMLDialogElement>();
 
   const openDialog = () => {
-    dialog.showModal();
-    dialog.addEventListener("click", (event) => {
-      if (event.target === dialog) {
-        dialog.close();
+    if (dialog) {
+      dialog.showModal();
+      if (dialog) {
+        dialog.addEventListener("click", (event) => {
+          if (event.target === dialog) {
+            dialog.close();
+          }
+        });
       }
-    });
+    }
   };
 
   const closeDialog = () => {
-    dialog.close();
+    if (dialog) {
+      dialog.close();
+    }
   };
 </script>
 
 <button
-  on:click={openDialog}
+  onclick={openDialog}
   transition:fade
   class="open"
   aria-label="menu open"
 >
-  <span />
-  <span />
-  <span /></button
+  <span></span>
+  <span></span>
+  <span></span></button
 >
 
 <dialog bind:this={dialog}>
@@ -67,9 +73,9 @@
     <nav class="menu">
       <div>
         {#each pages as a}
-          {#if a.path === $page.url.pathname}
+          {#if a.path === page.url.pathname}
             <a
-              on:click={closeDialog}
+              onclick={closeDialog}
               class="active"
               href={a.path}
               style={a.style}
@@ -84,7 +90,7 @@
             >
           {:else}
             <a
-              on:click={closeDialog}
+              onclick={closeDialog}
               class="passive"
               href={a.path}
               style={a.style}
@@ -102,9 +108,9 @@
       </div>
     </nav>
     <form method="dialog">
-      <button on:click={closeDialog} class="close" aria-label="menu close"
-        ><span />
-        <span /></button
+      <button onclick={closeDialog} class="close" aria-label="menu close"
+        ><span></span>
+        <span></span></button
       >
     </form>
   </div>

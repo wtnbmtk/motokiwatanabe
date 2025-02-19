@@ -1,25 +1,41 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
-  import { page } from "$app/stores";
+  import { page } from "$app/state";
 
-  export let current: number;
-  export let slug: string;
-  export let total: number;
-  export let limit: number;
-  export let max: number;
+  interface Props {
+    current: number;
+    slug: string;
+    total: number;
+    limit: number;
+    max: number;
+  }
 
-  $: current = Number($page.params.page);
-  $: max = Math.ceil(total / limit);
-  $: start = (current - 1) * limit;
-  $: end = current === max ? total - 1 : start + limit - 1;
+  let {
+    current = $bindable(),
+    slug,
+    total,
+    limit,
+    max = $bindable(),
+  }: Props = $props();
 
-  function goBack() {
+  $effect(() => {
+    current = Number(page.params.page);
+  });
+  $effect(() => {
+    max = Math.ceil(total / limit);
+  });
+  let start = $derived((current - 1) * limit);
+  let end = $derived(current === max ? total - 1 : start + limit - 1);
+
+  const goBack = (e: Event) => {
+    e.preventDefault();
     goto(`/articles/${slug}/${current - 1}`);
-  }
+  };
 
-  function goNext() {
+  const goNext = (e: Event) => {
+    e.preventDefault();
     goto(`/articles/${slug}/${current + 1}`);
-  }
+  };
 </script>
 
 {#if total && total > limit}
@@ -28,7 +44,7 @@
       <a
         href={`/articles/${slug}/${current - 1}`}
         class="button"
-        on:click|preventDefault={goBack}
+        onclick={goBack}
         aria-label="left arrow icon"
         aria-describedby="prev">prev</a
       >
@@ -38,7 +54,7 @@
       <a
         href={`/articles/${slug}/${current + 1}`}
         class="button"
-        on:click|preventDefault={goNext}
+        onclick={goNext}
         aria-label="right arrow icon"
         aria-describedby="next">next</a
       >
@@ -64,11 +80,5 @@
   }
   .pagination p {
     margin: 1rem;
-  }
-  button {
-    display: flex;
-  }
-  button:disabled {
-    visibility: hidden;
   }
 </style>

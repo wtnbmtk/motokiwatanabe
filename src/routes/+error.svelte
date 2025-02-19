@@ -1,5 +1,5 @@
 <script>
-  import { page } from "$app/stores";
+  import { page } from "$app/state";
 </script>
 
 <svelte:head>
@@ -8,7 +8,7 @@
 </svelte:head>
 
 <div class="contain">
-  <h1>{$page.error?.message}</h1>
+  <h1>{page.error?.message}</h1>
   <div class="inner">
     <a href="/">トップページにもどる</a>
   </div>

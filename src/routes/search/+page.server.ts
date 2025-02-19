@@ -2,7 +2,7 @@ import { NEWT_APP_UID, NEWT_ARTICLE_MODEL_UID } from "$env/static/private";
 import { newtClient } from "$lib/server/newt";
 import type { Article } from "$lib/server/newt";
 import { error } from "@sveltejs/kit";
-import type { PageServerLoad } from "./$types";
+import type { PageServerLoad } from "./$types.ts";
 
 export const load = (async () => {
   const { items: articles } = await newtClient.getContents<Article>({

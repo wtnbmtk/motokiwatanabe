@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { page } from "$app/stores";
+  import { page } from "$app/state";
 
   const pages = [
-    { name: "Articles", path: "/articles/latest/1" },
+    { name: "Portfolio", path: "/articles/development/1" },
     { name: "Contact", path: "/contact" },
     { name: "Infomation", path: "/information" },
   ];
@@ -10,7 +10,7 @@
 
 <nav>
   {#each pages as a}
-    {#if a.path === $page.url.pathname}
+    {#if a.path === page.url.pathname}
       <a class="active" href={a.path}>{a.name}</a>
     {:else}
       <a class="passive" href={a.path}>{a.name}</a>
@@ -23,6 +23,7 @@
     display: none;
     position: absolute;
     inset: 0 16px 0 auto;
+    text-transform: uppercase;
   }
   a:hover::after {
     position: relative;

@@ -4,20 +4,26 @@
   import Nav from "$lib/components/Nav.svelte";
   import { fade } from "svelte/transition";
 
-  let y = 0;
-  let dialog: HTMLDialogElement;
+  let y = $state(0);
+  let dialog = $state<HTMLDialogElement>();
 
   const openDialog = () => {
-    dialog.showModal();
-    dialog.addEventListener("click", (event) => {
-      if (event.target === dialog) {
-        dialog.close();
+    if (dialog) {
+      dialog.showModal();
+      if (dialog) {
+        dialog.addEventListener("click", (event) => {
+          if (event.target === dialog) {
+            dialog.close();
+          }
+        });
       }
-    });
+    }
   };
 
   const closeDialog = () => {
-    dialog.close();
+    if (dialog) {
+      dialog.close();
+    }
   };
 </script>
 
@@ -25,7 +31,7 @@
   <div>
     <a href="/"><Logo /></a>
     <Nav />
-    <button on:click={openDialog} class="open" aria-label="menu open"
+    <button onclick={openDialog} class="open" aria-label="menu open"
       >MENU</button
     >
   </div>
@@ -35,14 +41,14 @@
     <div>
       <a href="/"><Logo /></a>
       <Nav />
-      <button on:click={openDialog} class="open" aria-label="menu open"
+      <button onclick={openDialog} class="open" aria-label="menu open"
         >MENU</button
       >
     </div>
   </header>
 {/if}
 <svelte:window bind:scrollY={y} />
-<Dialog bind:dialog on:closeDialog={closeDialog} />
+<Dialog bind:value={dialog} dispatch={closeDialog} />
 
 <style>
   header,

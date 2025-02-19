@@ -19,7 +19,7 @@
       <label for="email">Email</label>
       <input id="email" name="email" type="email" size={80} />
       <label for="message">Message</label>
-      <textarea id="message" name="message" rows={10} cols={100} />
+      <textarea id="message" name="message" rows={10} cols={100}></textarea>
       <button type="submit">Submit</button>
     </form>
   </div>
@@ -29,6 +29,9 @@
   label:nth-child(n + 2) {
     display: block;
     margin: 1rem 0 0;
+  }
+  input {
+    height: 2rem;
   }
   button {
     position: relative;

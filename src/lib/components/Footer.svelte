@@ -1,18 +1,24 @@
 <script lang="ts">
   import LightBulb from "$lib/components/LightBulb.svelte";
   import Logo from "$lib/components/Logo.svelte";
-  export let categories;
+  let { categories } = $props();
 </script>
 
 <footer>
   <LightBulb />
+  <nav>
+    {#each categories as { slug, name }}
+      <a href={`/articles/${slug}/1`}>{name}</a>
+    {/each}
+  </nav>
   <a class="logo" href="/"><Logo /></a>
-  <small class="copyright">© 2024 Motoki Watanabe</small>
+  <small class="copyright">© 2025 Motoki Watanabe</small>
 </footer>
 
 <style>
   /* FOOTER*/
   footer {
+    padding: 0 8px;
   }
   .logo {
     display: block;
@@ -25,6 +31,7 @@
     gap: 16px;
     width: fit-content;
     margin: 0 auto;
+    text-transform: uppercase;
   }
 
   .copyright {

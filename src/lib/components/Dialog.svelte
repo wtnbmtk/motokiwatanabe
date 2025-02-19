@@ -1,7 +1,5 @@
 <script lang="ts">
-  import { page } from "$app/stores";
-  import { createEventDispatcher } from "svelte";
-  import { fade } from "svelte/transition";
+  import { page } from "$app/state";
 
   const pages = [
     {
@@ -17,6 +15,12 @@
       d: "M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z",
     },
     {
+      name: "Articles",
+      path: "/articles/latest/1",
+      style: "--index: 2;",
+      d: "M7.25 3.688a8.035 8.035 0 0 0-4.872-.523A.48.48 0 0 0 2 3.64v7.994c0 .345.342.588.679.512a6.02 6.02 0 0 1 4.571.81V3.688ZM8.75 12.956a6.02 6.02 0 0 1 4.571-.81c.337.075.679-.167.679-.512V3.64a.48.48 0 0 0-.378-.475 8.034 8.034 0 0 0-4.872.523v9.268Z",
+    },
+    {
       name: "CONTACT",
       path: "/contact",
       style: "--index: 0;",
@@ -30,20 +34,20 @@
     },
   ];
 
-  export let dialog: HTMLDialogElement;
-  const dispatch = createEventDispatcher();
-  function clickClose() {
-    dispatch("closeDialog");
-  }
+  let { value = $bindable(), dispatch, ...props } = $props();
+  let power = $state(5);
+  const close = () => {
+    dispatch(power);
+  };
 </script>
 
-<dialog bind:this={dialog}>
+<dialog bind:this={value} {...props}>
   <div class="inner">
     <h2>MENU</h2>
     <nav>
       {#each pages as a}
-        {#if a.path === $page.url.pathname}
-          <a on:click={clickClose} class="active" href={a.path} style={a.style}
+        {#if a.path === page.url.pathname}
+          <a onclick={close} class="active" href={a.path} style={a.style}
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
@@ -54,7 +58,7 @@
             >{a.name}</a
           >
         {:else}
-          <a on:click={clickClose} class="passive" href={a.path} style={a.style}
+          <a onclick={close} class="passive" href={a.path} style={a.style}
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
@@ -68,9 +72,9 @@
       {/each}
     </nav>
     <form method="dialog">
-      <button on:click={clickClose} class="close" aria-label="menu close"
-        ><span />
-        <span /></button
+      <button onclick={close} class="close" aria-label="menu close"
+        ><span></span>
+        <span></span></button
       >
     </form>
   </div>

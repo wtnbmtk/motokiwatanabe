@@ -2,8 +2,12 @@
   import { Parser, jaModel } from "budoux";
   import { onMount } from "svelte";
 
-  export let text = "";
-  let segments: string[] = [];
+  interface Props {
+    text?: string;
+  }
+
+  let { text = "" }: Props = $props();
+  let segments: string[] = $state([]);
 
   onMount(() => {
     const parser = new Parser(jaModel);
@@ -23,7 +27,7 @@
   .budoux {
     font-size: 1.8rem;
     font-weight: bold;
-    text-align: center;
+    margin: 0 0 2rem;
   }
   span {
     word-break: keep-all;

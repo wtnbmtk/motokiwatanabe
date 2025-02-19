@@ -1,18 +1,21 @@
 <script lang="ts">
-  import BudouX from "$lib/components/BudouX.svelte";
   import PhotoSwipeLightbox from "photoswipe/lightbox";
-  import { onMount } from "svelte";
-  import type { PageData } from "./$types";
+  import type { PageData } from "./$types.ts";
   import "photoswipe/style.css";
+  import "highlight.js/styles/atom-one-dark.css";
 
-  export let data: PageData;
+  interface Props {
+    data: PageData;
+  }
 
-  const text = data.article?.title;
+  let { data }: Props = $props();
 
-  onMount(() => {
+  let galleryId = "lightbox";
+
+  $effect(() => {
     let lightbox = new PhotoSwipeLightbox({
-      gallery: "#" + "lightbox",
-      children: "a",
+      gallery: `#${galleryId}`,
+      children: "a.image",
       pswpModule: () => import("photoswipe"),
     });
     lightbox.init();
@@ -27,19 +30,59 @@
 <div class="contain">
   <picture
     ><source
-      srcset={`${data.article?.coverImage.src}?format=webp`}
+      srcset={`${data.article?.coverImage.src}?format=webp&width=1200&height=630&fit=cover`}
       type="image/webp"
     /><img
       class="eyecatch"
       src={data.article?.coverImage.src}
-      alt=""
+      alt={data.article?.coverImage.altText}
       loading="eager"
     /></picture
   >
   <div class="inner">
     <article>
-      <BudouX {text} />
-      <section class="article">{@html data.article?.body}</section>
+      <h1>{@html data.segments}</h1>
+      <section class="article">
+        {@html data.highlightedHtml}
+        {#if data.article.gallery && data.article.gallery.length > 0}
+          <div class="pswp-gallery" id={galleryId}>
+            {#each data.article.gallery ?? [] as image}
+              <p>
+                {image.title}
+                {#if image.metadata}
+                  {#each Object.entries(image.metadata) as key}
+                    {#if key[0]}
+                      <span class="ampersand">&nbsp;&amp;</span>
+                      <a
+                        class="metadata-link"
+                        href={`https://x.com/${key[0]}`}
+                        target="_blank"
+                        rel="noreferrer">{`@${key[0]}`}</a
+                      >
+                    {/if}
+                  {/each}
+                {/if}
+              </p>
+              <p>{image.description}</p>
+              <a
+                class="image"
+                href={`${image.src}?format=webp`}
+                data-pswp-width={image.width}
+                data-pswp-height={image.height}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <picture
+                  ><source
+                    srcset={`${image.src}?format=webp&width=600&height=800&fit=outside`}
+                    type="image/webp"
+                  /><img src={`${image.src}`} alt={image.altText} /></picture
+                >
+              </a>
+            {/each}
+          </div>
+        {/if}
+      </section>
     </article>
   </div>
 </div>
@@ -49,18 +92,36 @@
   //   max-width: 516px;
   //   margin: auto;
   // }
-  .article :global(h2) {
-    font-weight: bold;
+  h1 {
+    text-align: initial;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    margin-bottom: 1em;
   }
-  .article :global(.name) {
-    text-align: center;
-    margin: 32px 0 4px;
+  .article :global(h2),
+  .article :global(h3) {
+    font-weight: bold;
+    margin: 1em 0;
+    border-left: solid 4px #fff;
+    padding-left: 2px;
+  }
+  .article :global(li) {
+    list-style-type: disc;
+  }
+  .pswp-gallery p {
+    max-width: 400px;
+    margin: auto;
+  }
+  .pswp-gallery img {
+    max-width: 400px;
+    margin: 0 auto 2em;
+    cursor: zoom-in;
+  }
+  .ampersand:first-child {
+    display: none;
   }
   .eyecatch {
     aspect-ratio: 1.91/1;
-  }
-  :global(.pswp-gallery img) {
-    cursor: zoom-in;
   }
   :global(hr) {
     border: transparent;

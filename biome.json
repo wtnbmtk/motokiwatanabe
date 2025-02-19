@@ -8,24 +8,13 @@
     "rules": {
       "all": true,
       "style": {
+        "noNamespace": "off",
         "noDefaultExport": "off",
-        "useConst": "off",
-        "useTemplate": "off",
-        "noInferrableTypes": "off"
-      },
-      "suspicious": {
-        "noImplicitAnyLet": "off",
-        "noConsoleLog": "off",
-        "noAssignInExpressions": "off",
-        "useAwait": "off"
+        "useConst": "off"
       },
       "correctness": {
         "noUnusedImports": "off",
-        "noUnusedVariables": "off",
-        "noUndeclaredVariables": "off"
-      },
-      "complexity": {
-        "noForEach": "off"
+        "noUnusedVariables": "off"
       }
     }
   }

@@ -1,47 +1,50 @@
-<!-- src/routes/+page.svelte -->
 <script lang="ts">
-  import { goto } from "$app/navigation";
-  import { page } from "$app/stores";
+  import { browser } from "$app/environment";
+  import { page } from "$app/state";
   import SearchForm from "$lib/components/SearchForm.svelte";
   import type { Article } from "$lib/server/newt";
-  import { onMount } from "svelte";
-  import { derived } from "svelte/store";
-
-  export let data: { articles: Article[] };
-
-  let filteredArticles: Article[] = [];
-  let query = "";
-
-  // URLのクエリパラメータを監視するストア
-  const searchQuery = derived(
-    page,
-    ($page) => $page.url.searchParams.get("q") || ""
-  );
-
-  // onMountでフィルタリングを行う
-  onMount(() => {
-    searchQuery.subscribe((q) => {
-      query = q;
-      const lowerCaseQuery = q.toLowerCase();
-      filteredArticles = data.articles.filter(
-        (article) =>
-          article.title.toLowerCase().includes(lowerCaseQuery) ||
-          article.body.toLowerCase().includes(lowerCaseQuery)
-      );
-    });
-  });
-
-  // フォーム送信時にクエリを更新してフィルタリングを行う
-  function handleSearch(event: CustomEvent) {
-    const value = event.detail.query;
-    goto(`/search?q=${encodeURIComponent(value)}`);
+  import type { PageData } from "./$types.ts";
+  interface Props {
+    data: PageData;
   }
+
+  let { data }: Props = $props();
+
+  interface Props {
+    data: {
+      articles: Article[];
+      gallery: { title?: string; description?: string };
+    };
+  }
+
+  // URLのクエリパラメータを監視する
+  let searchQuery = $derived(
+    browser ? page.url.searchParams.get("q") || "" : ""
+  );
+  let query = $state("");
+  let filteredArticles: Article[] = $state([]);
+
+  // リアクティブフィルタリング
+  $effect(() => {
+    query = searchQuery;
+    const lowerCaseQuery = searchQuery.toLowerCase();
+    filteredArticles = data.articles.filter(
+      (article) =>
+        article.title.toLowerCase().includes(lowerCaseQuery) ||
+        article.body.toLowerCase().includes(lowerCaseQuery) ||
+        article.gallery?.some((item) =>
+          Object.values(item).some((value) =>
+            String(value).toLowerCase().includes(lowerCaseQuery)
+          )
+        )
+    );
+  });
 </script>
 
 <div class="contain">
-  <h1>"{query}" に関する記事</h1>
+  <h1>"{searchQuery}" に関する記事</h1>
   <div class="inner">
-    <SearchForm {query} on:search={handleSearch} />
+    <SearchForm bind:query />
 
     {#if filteredArticles.length > 0}
       <ul class="articles">
@@ -66,22 +69,23 @@
                   width="250"
                   height="250"
                 /></picture
-              ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="1em"
-                height="1em"
-                viewBox="0 0 24 24"
-                ><path
-                  fill="currentColor"
-                  d="M5 17.59L15.59 7H9V5h10v10h-2V8.41L6.41 19z"
-                /></svg
+              ><svg class="icons">
+                <symbol id="arrow-up-right" viewBox="0 0 24 24"
+                  ><path
+                    stroke="#fff"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+                  />
+                </symbol><use href="#arrow-up-right" /></svg
               ></a
             >
           </li>
         {/each}
       </ul>
     {:else}
-      <p>"{query}" に関する記事はありません</p>
+      <p>"{searchQuery}" に関する記事はありません</p>
     {/if}
   </div>
 </div>
@@ -115,12 +119,14 @@
     cursor: pointer;
     transform: scale(1.3);
   }
-  .articles svg {
+  .icons {
     position: absolute;
     inset: auto auto 0 0;
     margin: auto;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(2px);
+    font-size: 1.6rem;
+    padding: 4px 4px 2px 2px;
   }
   p {
     text-align: center;

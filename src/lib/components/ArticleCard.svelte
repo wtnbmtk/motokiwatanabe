@@ -1,10 +1,10 @@
 <script lang="ts">
-  export let articles;
+  let { articles } = $props();
 </script>
 
 <div class="articles">
   {#each articles as article, i}
-    <article>
+    <article id={`${i}`}>
       <h2>{article.title}</h2>
       <a href={`/article/${article.slug}`}
         ><picture>
@@ -25,14 +25,16 @@
             height="250"
           /></picture
         ><svg class="icons">
-          <use href="#arrow-up-right" />
-        </svg><symbol id="arrow-up-right" viewBox="0 0 24 24"
-          ><path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
-          />
-        </symbol></a
+          <symbol id="arrow-up-right" viewBox="0 0 24 24"
+            ><path
+              stroke="#fff"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+            />
+          </symbol><use href="#arrow-up-right" /></svg
+        ></a
       >
     </article>
   {/each}
@@ -53,6 +55,7 @@
   }
   .articles h2 {
     font-size: 1rem;
+    font-style: normal;
   }
   .articles a {
     display: block;
