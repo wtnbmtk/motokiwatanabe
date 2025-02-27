@@ -1,18 +1,64 @@
 <script lang="ts">
+  import AxisRadial from "$lib/components/AxisRadial.svelte";
+  import Radar from "$lib/components/Radar.svelte";
+  import { LayerCake, Svg } from "layercake";
   import type { PageData } from "./$types.ts";
-  export let data: PageData;
+  interface Props {
+    data: PageData;
+  }
+  let { data }: Props = $props();
+
+  // 表示ラベルを定義
+  const tags = data.chart?.tags?.map((t) => t.name) ?? [];
+
+  const labelMap = {
+    score1: tags[0] || "Tag 1",
+    score2: tags[1] || "Tag 2",
+    score3: tags[2] || "Tag 3",
+    score4: tags[3] || "Tag 4",
+    score5: tags[4] || "Tag 5",
+  };
+
+  const scores = data.chart?.score?.map((s) => s.number) ?? [];
+  // データを変換し、ラベル名とスコアを対応付ける
+  const chartData = [
+    {
+      [labelMap.score1]: scores[0] ?? null,
+      [labelMap.score2]: scores[1] ?? null,
+      [labelMap.score3]: scores[2] ?? null,
+      [labelMap.score4]: scores[3] ?? null,
+      [labelMap.score5]: scores[4] ?? null,
+    },
+  ];
+
+  // xKey はラベル名を使用
+  const xKey = Object.values(labelMap);
 </script>
 
 <div class="contain">
   <div class="inner introduction">
     <div>
-      <enhanced:img class="enhanced" src="$lib/img/profile.jpg" alt="" />
-      <div>
-        <p class="small">engineer</p>
-        <p class="name">渡辺 元己</p>
+      <div class="picture">
+        <enhanced:img class="profile" src="$lib/img/profile.jpg" alt="" />
+      </div>
+      <div class="chart-container">
+        <LayerCake
+          padding={{ top: 30, right: 30, bottom: 30, left: 30 }}
+          x={xKey}
+          xDomain={[0, 10]}
+          xRange={({ height }: { height: number }) => [0, height / 2]}
+          data={chartData}
+        >
+          <Svg>
+            <AxisRadial />
+            <Radar />
+          </Svg>
+        </LayerCake>
       </div>
     </div>
     <div>
+      <p class="small">engineer</p>
+      <p class="name">渡辺 元己</p>
       <p>
         東京工芸大学卒。同大学在学中からプログラミングスキル、デザインスキルを身に着けてきました。プログラミングは特にWebのフロントエンド領域を得意としていて、コーディングによる様々なデザイン手法に関心があります。その為、フロントエンドのライブラリやフレームワークの扱いに幅広い経験があります。バックエンドにも注力していて、ブログサイトの開発を通じてデータのやり取りの手法について学んでいます。Webプログラミング以外ではVBAを用いた業務効率化ツールの開発や、Pythonを用いたOCRツールの開発経験があります。
       </p>
@@ -122,13 +168,19 @@
 </svg>
 
 <style>
-  .introduction > div:nth-of-type(1) {
+  .introduction > div:first-child {
     display: grid;
+    grid-auto-flow: row;
     place-content: center;
-    grid-auto-flow: column;
-    place-content: baseline;
-    place-items: center;
-    gap: 1rem;
+    gap: 32px;
+  }
+  .picture {
+    place-content: center;
+  }
+  .chart-container {
+    width: 300px;
+    height: 250px;
+    margin: 0 auto;
   }
   p.small {
     margin: 0;
@@ -178,11 +230,11 @@
     stroke: black;
     transition: all 0.7s;
   }
-  .enhanced {
-    width: 60px;
-    height: auto;
+  .profile {
+    width: 150px;
     margin: auto;
     border-radius: 50%;
+    place-content: center;
   }
   .inner {
     margin: 1rem auto 0;
@@ -308,11 +360,11 @@
     display: none;
   }
   @media (width >= 600px) {
+    .introduction > div:first-child {
+      grid-auto-flow: column;
+    }
   }
   @media (width >= 800px) {
-    .introduction {
-      grid-template-columns: repeat(2, auto);
-    }
     .skills {
       grid-template-columns: repeat(3, auto);
       gap: 0;

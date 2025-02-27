@@ -36,25 +36,24 @@ export interface Tag {
   name: string;
   slug: string;
 }
+export interface Author {
+  fullName: string;
+  slug: string;
+  biography: string;
+  profileImage?: Media;
+}
+export interface Chart {
+  name: string;
+  slug: string;
+  score?: { number: number }[];
+  tags?: {
+    name?: string;
+    slug?: string;
+  }[];
+}
+
 export const newtClient = createClient({
   spaceUid: NEWT_SPACE_UID,
   token: NEWT_CDN_API_TOKEN,
   apiType: "cdn",
 });
-
-export const getArticles = async (
-  query?: GetContentsQuery
-): Promise<{ articles: Article[]; total: number }> => {
-  const { items: articles, total } = await newtClient.getContents<Article>({
-    appUid: `${process.env.NEXT_PUBLIC_NEWT_APP_UID}`,
-    modelUid: `${process.env.NEXT_PUBLIC_NEWT_ARTICLE_MODEL_UID}`,
-    query: {
-      depth: 2,
-      ...query,
-    },
-  });
-  return {
-    articles,
-    total,
-  };
-};
