@@ -59,9 +59,9 @@
     <div>
       <p class="small">engineer</p>
       <p class="name">渡辺 元己</p>
-      <p>
-        東京工芸大学卒。同大学在学中からプログラミングスキル、デザインスキルを身に着けてきました。プログラミングは特にWebのフロントエンド領域を得意としていて、コーディングによる様々なデザイン手法に関心があります。その為、フロントエンドのライブラリやフレームワークの扱いに幅広い経験があります。バックエンドにも注力していて、ブログサイトの開発を通じてデータのやり取りの手法について学んでいます。Webプログラミング以外ではVBAを用いた業務効率化ツールの開発や、Pythonを用いたOCRツールの開発経験があります。
-      </p>
+      <div>
+        {@html data.author?.biography}
+      </div>
       <nav>
         <a href="https://mtkwtnb.jp/" target="_blank"
           ><svg class="icons" stroke-width="1.5" stroke="currentColor">
