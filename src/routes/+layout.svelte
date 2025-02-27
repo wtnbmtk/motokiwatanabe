@@ -2,6 +2,7 @@
   import "../app.css";
   import Footer from "$lib/components/Footer.svelte";
   import Header from "$lib/components/Header.svelte";
+  import Menu from "$lib/components/Menu.svelte";
   let { data, children } = $props();
 </script>
 
@@ -13,6 +14,7 @@
 
 <main>
   {@render children?.()}
+  <Menu author={data.author?.slug} />
 </main>
 
 <Footer categories={data.categories} />

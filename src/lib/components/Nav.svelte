@@ -2,7 +2,7 @@
   import { page } from "$app/state";
 
   const pages = [
-    { name: "Portfolio", path: "/articles/development/1" },
+    { name: "WORKS", path: "/articles/development/1" },
     { name: "Contact", path: "/contact" },
     { name: "Infomation", path: "/information" },
   ];
