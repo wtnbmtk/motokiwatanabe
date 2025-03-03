@@ -32,7 +32,7 @@ export const load = (async () => {
     query: {
       depth: 2,
       slug: {
-        in: ["radar0"],
+        in: ["radar"],
       },
     },
   });

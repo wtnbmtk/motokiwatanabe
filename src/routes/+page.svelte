@@ -9,7 +9,7 @@
   let { data }: Props = $props();
 
   // 表示ラベルを定義
-  const tags = data.chart?.tags?.map((t) => t.name) ?? [];
+  const tags = data.chart?.tags?.map((t) => t.slug) ?? [];
 
   const labelMap = {
     score1: tags[0] || "Tag 1",
@@ -36,6 +36,11 @@
 </script>
 
 <div class="contain">
+  <h1>ABOUT</h1>
+  <div class="h2">
+    <h2>自己紹介</h2>
+    <span></span>
+  </div>
   <div class="inner introduction">
     <div>
       <div class="picture">
@@ -57,7 +62,7 @@
       </div>
     </div>
     <div>
-      <p class="small">engineer</p>
+      <p class="small">programmer</p>
       <p class="name">渡辺 元己</p>
       <div>
         {@html data.author?.biography}
@@ -127,7 +132,7 @@
       <p>latest</p>
       <p>past</p>
     </div>
-    <ul class="work">
+    <ul class="works">
       {#each data.articles as article}
         <li>
           <a href={`/article/${article.slug}`}
@@ -355,6 +360,9 @@
   }
   .exprerience .icons {
     margin-left: 8px;
+  }
+  .works a {
+    text-decoration: underline;
   }
   .symbol {
     display: none;
