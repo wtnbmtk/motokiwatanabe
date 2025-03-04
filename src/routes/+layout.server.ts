@@ -28,7 +28,7 @@ export const load = async () => {
       depth: 2,
       order: ["-_sys.createdAt"],
       slug: {
-        in: ["development", "photography", "music", "game"],
+        in: ["development"],
       },
     },
   });
