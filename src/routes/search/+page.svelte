@@ -4,18 +4,12 @@
   import SearchForm from "$lib/components/SearchForm.svelte";
   import type { Article } from "$lib/server/newt";
   import type { PageData } from "./$types.ts";
+
   interface Props {
     data: PageData;
   }
 
   let { data }: Props = $props();
-
-  interface Props {
-    data: {
-      articles: Article[];
-      gallery: { title?: string; description?: string };
-    };
-  }
 
   // URLのクエリパラメータを監視する
   let searchQuery = $derived(
@@ -27,6 +21,13 @@
   // リアクティブフィルタリング
   $effect(() => {
     query = searchQuery;
+
+    // 検索値が null または空文字なら結果を空にする
+    if (!searchQuery.trim()) {
+      filteredArticles = [];
+      return;
+    }
+
     const lowerCaseQuery = searchQuery.toLowerCase();
     filteredArticles = data.articles.filter(
       (article) =>

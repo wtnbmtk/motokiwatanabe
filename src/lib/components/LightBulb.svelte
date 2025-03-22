@@ -236,12 +236,12 @@
       stroke="#0088cc"
     />
     <circle
-      class="end-circle"
+      class="end_circle"
       cx={x2}
       cy={y2}
       r={endCircleRadius}
-      fill="#0088cc"
       pointer-events="all"
+      fill="#0088cc"
     />
   </svg>
 </div>
@@ -427,6 +427,18 @@
     background: #000;
     color: #fff;
   }
+  :global(.theme-dark .axis-level) {
+    fill: #fff;
+  }
+  :global(.theme-light .axis-level) {
+    fill: #000;
+  }
+  :global(.theme-dark text) {
+    fill: #fff;
+  }
+  :global(.theme-light text) {
+    fill: #000;
+  }
   .lighting {
     margin: 40px auto 20px;
     width: fit-content;
@@ -445,7 +457,7 @@
     touch-action: none; /* タッチスクロールを無効化 */
   }
 
-  .end-circle {
+  .end_circle {
     cursor: pointer;
     pointer-events: all;
   }

@@ -16,10 +16,8 @@
     getContext<LayerCakeContext>("LayerCake");
 
   export let stroke = "#fff";
-  export let fill = "#fff";
   export let opacity = 0.2;
   export let fontSize = 12;
-  export let textAnchor = "middle";
   export let levels = 5;
 
   $: radius = $xRange[1];
@@ -35,7 +33,6 @@
       cx="0"
       cy="0"
       r={levelScale * i}
-      {fill}
       {stroke}
       {opacity}
     />
@@ -61,7 +58,6 @@
       y={1.2 * radius * Math.sin(angle)}
       dy="0.35em"
       font-size={fontSize}
-      {fill}
       text-anchor={angle < -Math.PI / 2 || angle > Math.PI / 2
         ? "end"
         : angle === -Math.PI / 2 || angle === Math.PI / 2

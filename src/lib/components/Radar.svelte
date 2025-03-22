@@ -100,7 +100,6 @@
     stroke-linejoin: round;
     stroke-linecap: round;
   }
-
   .radar-group {
     transition: opacity 100ms ease-out;
   }

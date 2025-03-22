@@ -9,16 +9,9 @@ import type { Article, Category } from "$lib/server/newt";
 import { error } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types.ts";
 
-export const load = (async ({ params, setHeaders }) => {
+export const load = (async ({ params }) => {
   const current = Number(params.page);
   const limit = Number(PAGE_LIMIT);
-
-  // キャッシュ制御ヘッダーの設定
-  setHeaders({
-    "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
-    Pragma: "no-cache",
-    Expires: "0",
-  });
 
   const category = await newtClient.getFirstContent<Category>({
     appUid: NEWT_APP_UID,
