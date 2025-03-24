@@ -456,7 +456,6 @@
     width: 40px;
     touch-action: none; /* タッチスクロールを無効化 */
   }
-
   .end_circle {
     cursor: pointer;
     pointer-events: all;

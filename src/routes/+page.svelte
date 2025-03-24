@@ -38,7 +38,7 @@
 <div class="contain">
   <h1>ABOUT</h1>
   <div class="h2">
-    <h2>自己紹介</h2>
+    <h2>Biography</h2>
     <span></span>
   </div>
   <div class="inner introduction">
@@ -47,6 +47,7 @@
         <enhanced:img class="profile" src="$lib/img/profile.jpg" alt="" />
       </div>
       <div class="chart-container">
+        <p class="radar_title">Skills & Interests Radar</p>
         <LayerCake
           padding={{ top: 30, right: 30, bottom: 30, left: 30 }}
           x={xKey}
@@ -84,7 +85,7 @@
     </div>
   </div>
   <div class="h2">
-    <h2>スキル</h2>
+    <h2>Development Skills</h2>
     <span></span>
     <div class="circle"></div>
   </div>
@@ -124,7 +125,7 @@
     </div>
   </div>
   <div class="h2">
-    <h2>開発経験</h2>
+    <h2>Development Exprerience</h2>
     <span></span>
   </div>
   <div class="inner exprerience">
@@ -178,9 +179,28 @@
     grid-auto-flow: row;
     place-content: center;
     gap: 32px;
+    margin-bottom: 32px;
   }
   .picture {
     place-content: center;
+  }
+  .picture :global(picture) {
+    width: 158px;
+    height: 158px;
+    padding: 4px;
+    background: #333;
+    border-radius: 50%;
+  }
+  .profile {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+  }
+  .radar_title {
+    text-align: center;
+    margin: 0;
   }
   .chart-container {
     width: 300px;
@@ -234,12 +254,6 @@
     fill: black;
     stroke: black;
     transition: all 0.7s;
-  }
-  .profile {
-    width: 150px;
-    margin: auto;
-    border-radius: 50%;
-    place-content: center;
   }
   .inner {
     margin: 1rem auto 0;
