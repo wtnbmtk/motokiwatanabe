@@ -183,6 +183,7 @@
   }
   .picture {
     place-content: center;
+    margin: auto;
   }
   .picture :global(picture) {
     width: 158px;
