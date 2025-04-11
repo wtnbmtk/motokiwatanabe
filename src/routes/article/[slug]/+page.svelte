@@ -123,8 +123,11 @@
   .eyecatch {
     aspect-ratio: 1.91/1;
   }
-  :global(hr) {
+  .article :global(hr) {
     border: transparent;
     padding: 8px;
+  }
+  .article :global(a) {
+    text-decoration: underline;
   }
 </style>
