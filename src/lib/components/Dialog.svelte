@@ -37,7 +37,7 @@
 
 <dialog bind:this={value} {...props}>
   <div class="inner">
-    <h2>MENU</h2>
+    <h2 class="label">MENU</h2>
     <nav>
       {#each pages as a}
         {#if a.path === page.url.pathname}
@@ -152,10 +152,11 @@
     padding: 1rem 2rem;
     background: #000;
   }
-  h2 {
+  .label {
     width: 100%;
     text-align: center;
     color: white;
+    margin: 0 auto 16px;
   }
   nav {
     display: grid;
@@ -164,17 +165,13 @@
   a {
     position: relative;
     z-index: 0;
-    display: grid;
-    grid-auto-flow: column;
-    place-content: center;
-    text-decoration: none;
+    display: flex;
     cursor: pointer;
-    font-size: 1rem;
-    place-self: baseline;
-    width: 160px;
+    width: 137px;
     background-color: black;
     transition: all 1s ease-out;
     color: white;
+    padding: 0 16px;
   }
   a:after {
     content: "";

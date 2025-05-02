@@ -35,6 +35,11 @@
   const xKey = Object.values(labelMap);
 </script>
 
+<svelte:head>
+  <title>Motoki Watanabe's Portfolio</title>
+  <meta name="description" content="Top Page." />
+</svelte:head>
+
 <div class="contain">
   <h1>ABOUT</h1>
   <div class="h2">
@@ -69,12 +74,6 @@
         {@html data.author?.biography}
       </div>
       <nav>
-        <a href="https://mtkwtnb.jp/" target="_blank"
-          ><svg class="icons" stroke-width="1.5" stroke="currentColor">
-            <use href="#blog" />
-          </svg>
-          Blog
-        </a>
         <a href="https://github.com/wtnbmtk" target="_blank"
           ><svg class="icons">
             <use href="#github" />
@@ -255,9 +254,6 @@
     fill: black;
     stroke: black;
     transition: all 0.7s;
-  }
-  .inner {
-    margin: 1rem auto 0;
   }
   .skills {
     display: grid;

@@ -3,11 +3,8 @@
 </script>
 
 <svelte:head>
-  <title>Newt・SvelteKitフォーム</title>
-  <meta
-    name="description"
-    content="NewtとSvelteKitを利用した問い合わせフォームです"
-  />
+  <title>CONTACT</title>
+  <meta name="description" content="Contact Page." />
 </svelte:head>
 
 <div class="contain">

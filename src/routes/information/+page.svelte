@@ -1,3 +1,8 @@
+<svelte:head>
+  <title>INFORMATION</title>
+  <meta name="description" content="Information Page." />
+</svelte:head>
+
 <div class="contain">
   <hgroup>
     <h1 class="h1">INFORMATION</h1>

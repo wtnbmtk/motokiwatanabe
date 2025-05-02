@@ -42,8 +42,13 @@
   });
 </script>
 
+<svelte:head>
+  <title>Search results for "{searchQuery}"</title>
+  <meta name="description" content="Result Page." />
+</svelte:head>
+
 <div class="contain">
-  <h1>"{searchQuery}" に関する記事</h1>
+  <h1>Search results for "{searchQuery}"</h1>
   <div class="inner">
     <SearchForm bind:query />
 
@@ -86,7 +91,7 @@
         {/each}
       </ul>
     {:else}
-      <p>"{searchQuery}" に関する記事はありません</p>
+      <p>No search results for "{searchQuery}"</p>
     {/if}
   </div>
 </div>
